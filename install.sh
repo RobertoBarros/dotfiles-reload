@@ -70,6 +70,7 @@ install_brew_pkgs() {
   brew install zsh-syntax-highlighting zsh-autosuggestions
   brew install --cask font-fira-code-nerd-font
   brew install --cask font-jetbrains-mono-nerd-font
+  brew install --cask wezterm
   log_ok "brew packages installed"
 }
 
@@ -135,6 +136,7 @@ SYMLINKS=(
   "${DOTFILES_ROOT}/oh-my-zsh/zprofile.sh:$HOME/.zprofile"
   "${DOTFILES_ROOT}/oh-my-zsh/zshrc.sh:$HOME/.zshrc"
   "${DOTFILES_ROOT}/oh-my-zsh/aliases.sh:$HOME/.aliases"
+  "${DOTFILES_ROOT}/wezterm/wezterm.lua:$HOME/.wezterm.lua"
 )
 
 link_batch
