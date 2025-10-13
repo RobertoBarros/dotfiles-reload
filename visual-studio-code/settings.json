@@ -10,7 +10,7 @@
   "editor.guides.bracketPairs": true, // Mostra linhas guias entre colchetes, facilita localizar blocos
   "editor.inlineSuggest.enabled": true, // Ativa sugestões inline tipo GitHub Copilot
   "editor.minimap.enabled": false, // Desativa minimapa lateral para evitar poluição visual
-    "editor.quickSuggestions": {
+  "editor.quickSuggestions": {
     "other": "on",
     "strings": "on"
   },
@@ -23,31 +23,30 @@
 
   // ===== ERB/HTML/JS/JSON/CSS: formatters =====
   "[css]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[erb]": {
-      "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
-      "editor.formatOnSave": true
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true
   },
   "[html]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[ruby]": {},
-
 
   // ===== RubyLSP =====
   "rubyLsp.enabledFeatures": {
@@ -70,7 +69,7 @@
     "workspaceSymbol": true // Busca símbolos no projeto inteiro
   }, // Ativa todas as features úteis do LSP para Ruby
   "rubyLsp.rubyVersionManager": {
-    "identifier": "rbenv" // Usa rbenv para gerenciar versões Ruby
+    "identifier": "mise" // Usa mise para gerenciar versões Ruby
   },
 
   // ===== Emmet =====
@@ -173,8 +172,7 @@
     "yaml": true
   }, // Define onde o Copilot pode sugerir código/texto
 
-  // ===== Outros ===== 
-  "security.workspace.trust.untrustedFiles": "open"
-  
-
+  // ===== Outros =====
+  "security.workspace.trust.untrustedFiles": "open",
+  "explorer.confirmDelete": false
 }
