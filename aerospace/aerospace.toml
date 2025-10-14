@@ -1,14 +1,8 @@
+start-at-login = true
+
 after-startup-command = [
   'exec-and-forget borders active_color=0xffFF4500 inactive_color=0xffdcdcdc width=8.0 hidpi=on',
 ]
-
-exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-]
-
-start-at-login = true
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -36,31 +30,16 @@ f1 = '''exec-and-forget open -a "Google Chrome"'''
 f2 = '''exec-and-forget open -a "Visual Studio Code"'''
 f3 = '''exec-and-forget open -a "WezTerm"'''
 f4 = '''exec-and-forget open -a "ChatGPT"'''
-f5 = '''exec-and-forget open -a "WhatsApp"'''
-f8 = '''exec-and-forget open -a "Spotify"'''
 
 shift-f1 = '''exec-and-forget $HOME/code/dotfiles-reload/open_chrome_in_tab.sh localhost'''
-shift-f2 = '''exec-and-forget open -a "Gmail"'''
-shift-f3 = '''exec-and-forget open -a "Youtube"'''
-shift-f4 = '''exec-and-forget open -a "X"'''
 
 alt-comma = 'layout accordion horizontal vertical'
 alt-slash = 'layout tiles horizontal vertical'
-
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
 
 ctrl-alt-down = 'focus down'
 ctrl-alt-left = 'focus left'
 ctrl-alt-right = 'focus right'
 ctrl-alt-up = 'focus up'
-
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
 
 ctrl-alt-shift-down = 'move down'
 ctrl-alt-shift-left = 'move left'
@@ -87,6 +66,11 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
+alt-g = ['''exec-and-forget open -a "Gmail"''', 'workspace G']
+alt-s = ['''exec-and-forget open -a "Spotify"''', 'workspace S']
+alt-w = ['''exec-and-forget open -a "WhatsApp"''', 'workspace W']
+alt-x = ['''exec-and-forget open -a "X"''', 'workspace X']
+alt-y = ['''exec-and-forget open -a "Youtube"''', 'workspace Y']
 
 alt-shift-0 = 'move-node-to-workspace 10'
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -141,12 +125,23 @@ run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.openai.chat'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace W'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace S'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome.app.agimnkijcaahngcdmfeangaknmldooml'
+run = 'move-node-to-workspace Y'
+
+[workspace-to-monitor-force-assignment]
+G = 'secondary'
+S = 'secondary'
+W = 'secondary'
+X = 'secondary'
+Y = 'secondary'
