@@ -154,6 +154,7 @@
   // ===== Git =====
   "git.blame.editorDecoration.enabled": false, // Não polui o editor com info de blame do git
   "git.confirmSync": false, // Não pede confirmação ao sincronizar, agiliza workflow
+  "git.autofetch": true,
 
   // ===== GitHub Copilot =====
   "chat.agent.enabled": true, // Ativa chat agent (se usar alguma extensão AI/Chat)
