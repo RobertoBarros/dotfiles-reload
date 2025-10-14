@@ -108,6 +108,14 @@ shift-down = ['volume set 0', 'mode main']
 up = 'volume up'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 if.window-title-regex-substring = 'Bitwarden'
 run = 'layout floating'
