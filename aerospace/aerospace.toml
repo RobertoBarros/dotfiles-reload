@@ -68,6 +68,7 @@ alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-g = ['''exec-and-forget open -a "Gmail"''', 'workspace G']
 alt-k = ['''exec-and-forget open -a "Slack"''', 'workspace K']
+alt-m = ['''exec-and-forget open -a "Google Meet"''', 'workspace M']
 alt-s = ['''exec-and-forget open -a "Spotify"''', 'workspace S']
 alt-w = ['''exec-and-forget open -a "WhatsApp"''', 'workspace W']
 alt-x = ['''exec-and-forget open -a "X"''', 'workspace X']
@@ -155,6 +156,10 @@ run = 'move-node-to-workspace G'
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace K'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan'
+run = 'move-node-to-workspace M'
 
 [workspace-to-monitor-force-assignment]
 G = 'secondary'
