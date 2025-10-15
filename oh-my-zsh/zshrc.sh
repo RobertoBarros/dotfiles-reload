@@ -8,7 +8,6 @@ plugins=(
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source <(fzf --zsh)
 
 ZSH_THEME="robbyrussell"
 
@@ -37,3 +36,6 @@ $PATH"
 
 ##### 4) Aliases  ##############################################
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
+
+##### 5) Configurações específicas de programas  ######################################
+source <(fzf --zsh) # Fuzzy finder for ctrl+r
