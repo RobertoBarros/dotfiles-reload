@@ -66,6 +66,7 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
+alt-f = ['''exec-and-forget open -a "Finder"''']
 alt-g = ['''exec-and-forget open -a "Gmail"''', 'workspace G']
 alt-k = ['''exec-and-forget open -a "Slack"''', 'workspace K']
 alt-m = ['''exec-and-forget open -a "Google Meet"''', 'workspace M']
@@ -89,7 +90,7 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-tab = 'workspace-back-and-forth'
 ctrl-alt-r = 'flatten-workspace-tree'
 
-alt-f = 'fullscreen'
+alt-ctrl-f = 'fullscreen'
 alt-shift-f = 'layout floating tiling'
 
 alt-shift-s = 'mode service'
