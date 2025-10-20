@@ -2,4 +2,4 @@
 eval "$("$(/usr/bin/which brew)" shellenv 2>/dev/null || true)"
 
 # Load mise environment
-eval "$(~/.local/bin/mise activate bash)"
+eval "$($(brew --prefix mise)/bin/mise activate zsh)"
