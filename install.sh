@@ -145,6 +145,7 @@ SYMLINKS=(
   "${DOTFILES_ROOT}/gitconfig:$HOME/.gitconfig"
   "${DOTFILES_ROOT}/irbrc:$HOME/.irbrc"
   "${DOTFILES_ROOT}/rspec:$HOME/.rspec"
+  "${DOTFILES_ROOT}/ssh/config:$HOME/.ssh/config"
 )
 
 link_batch
