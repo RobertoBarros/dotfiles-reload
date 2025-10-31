@@ -142,6 +142,9 @@ SYMLINKS=(
   "${DOTFILES_ROOT}/oh-my-zsh/aliases.sh:$HOME/.aliases"
   "${DOTFILES_ROOT}/wezterm/wezterm.lua:$HOME/.wezterm.lua"
   "${DOTFILES_ROOT}/aerospace/aerospace.toml:$HOME/.aerospace.toml"
+  "${DOTFILES_ROOT}/gitconfig:$HOME/.gitconfig"
+  "${DOTFILES_ROOT}/irbrc:$HOME/.irbrc"
+  "${DOTFILES_ROOT}/rspec:$HOME/.rspec"
 )
 
 link_batch
