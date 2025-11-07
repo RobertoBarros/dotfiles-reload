@@ -15,6 +15,9 @@ alias lll='yazi'
 
 alias remove-node-modules="find . -name "node_modules" -type d -prune -exec rm -rf '{}' +"
 
+# Alterar configuração do VSCode
+alias vsconf="$HOME/code/dotfiles-reload/visual-studio-code/switch_vscode_config.sh"
+
 # Muda o título da tab do WezTerm
 tab() {
   wezterm cli set-tab-title "$*"
