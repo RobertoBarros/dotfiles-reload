@@ -161,16 +161,7 @@
   "chat.editing.confirmEditRequestRemoval": false,
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.enable": {
-    "*": false,
-    "plaintext": true,
-    "markdown": true,
-    "scminput": false,
-    "html": true,
-    "html.erb": true,
-    "javascript": true,
-    "ruby": true,
-    "scss": true,
-    "yaml": true
+    "*": false
   }, // Define onde o Copilot pode sugerir código/texto
 
   // ===== Outros =====
