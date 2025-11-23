@@ -24,6 +24,7 @@ export BUNDLER_EDITOR=code
 export EDITOR=code
 export THOR_MERGE="code --wait"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Problema da gem blazer https://stackoverflow.com/a/53404317
+export RAILS_EDITOR="code"
 
 
 ##### 3) Caminhos (PATH)  ##############################################################

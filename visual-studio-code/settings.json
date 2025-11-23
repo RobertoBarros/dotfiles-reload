@@ -175,5 +175,6 @@
 
   // ===== Outros =====
   "security.workspace.trust.untrustedFiles": "open",
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "security.promptForLocalFileProtocolHandling": false
 }
