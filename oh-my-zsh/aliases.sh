@@ -23,4 +23,20 @@ tab() {
   wezterm cli set-tab-title "$*"
 }
 
+# Terminate all connections to the current Rails database
+dbkill() {
+  local dbname
+  dbname=$(rails runner "puts ActiveRecord::Base.connection_db_config.database" 2>/dev/null)
+
+  if [ -z "$dbname" ]; then
+    echo "Could not detect database name. Are you in a Rails app folder?"
+    return 1
+  fi
+
+  psql -d postgres -c "SELECT pg_terminate_backend(pid)
+                       FROM pg_stat_activity
+                       WHERE datname='${dbname}'
+                         AND pid <> pg_backend_pid();"
+}
+
 unalias lt # para usar o localtunnel
