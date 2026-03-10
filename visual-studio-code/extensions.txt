@@ -3,7 +3,6 @@ aliariff.auto-add-brackets
 aliariff.vscode-erb-beautify
 be5invis.toml
 bradlc.vscode-tailwindcss
-bung87.rails
 bung87.vscode-gemfile
 cardinal90.multi-cursor-case-preserve
 christian-kohler.path-intellisense

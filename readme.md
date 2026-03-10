@@ -28,7 +28,7 @@ O script:
 - Configura toolchains via Mise
 - Aplica defaults do macOS
 - Instala extensões do VS Code a partir de `visual-studio-code/extensions.txt`
-- Cria symlinks para zsh, WezTerm, VS Code, Aerospace e Stream Deck
+- Cria symlinks para zsh, WezTerm, Ghostty, VS Code, Aerospace e Stream Deck
 
 ## Symlinks criados
 
@@ -40,4 +40,5 @@ O script:
 | oh-my-zsh/zshrc.sh               | ~/.zshrc                                                       |
 | oh-my-zsh/aliases.sh             | ~/.aliases                                                     |
 | wezterm/wezterm.lua              | ~/.wezterm.lua                                                 |
+| ghostty/config                   | ~/.config/ghostty/config                                       |
 | aerospace/aerospace.toml         | ~/.aerospace.toml                                              |

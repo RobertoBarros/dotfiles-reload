@@ -98,8 +98,28 @@ set_macos_defaults() {
 install_vscode_extensions() {
   section "VS Code extensions"
   local list="${DOTFILES_ROOT}/visual-studio-code/extensions.txt"
+  local extension output
   [[ -f "$list" ]] || die "VSCode extensions.txt not found: $list"
-  xargs -n1 code --force --install-extension < "$list"
+
+  while IFS= read -r extension || [[ -n "$extension" ]]; do
+    [[ -n "${extension// }" ]] || continue
+
+    log_step "installing VS Code extension: $extension"
+
+    if output=$(code --force --install-extension "$extension" 2>&1); then
+      log_ok "VS Code extension installed: $extension"
+      continue
+    fi
+
+    if [[ "$output" == *"is already installed"* ]]; then
+      log_warn "VS Code extension already installed: $extension"
+      continue
+    fi
+
+    printf "%s\n" "$output"
+    die "failed to install VS Code extension: $extension"
+  done < "$list"
+
   log_ok "VS Code extensions installed"
 }
 
@@ -141,6 +161,7 @@ SYMLINKS=(
   "${DOTFILES_ROOT}/oh-my-zsh/zshrc.sh:$HOME/.zshrc"
   "${DOTFILES_ROOT}/oh-my-zsh/aliases.sh:$HOME/.aliases"
   "${DOTFILES_ROOT}/wezterm/wezterm.lua:$HOME/.wezterm.lua"
+  "${DOTFILES_ROOT}/ghostty/config:$HOME/.config/ghostty/config"
   "${DOTFILES_ROOT}/aerospace/aerospace.toml:$HOME/.aerospace.toml"
   "${DOTFILES_ROOT}/gitconfig:$HOME/.gitconfig"
   "${DOTFILES_ROOT}/irbrc:$HOME/.irbrc"

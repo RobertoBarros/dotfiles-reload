@@ -1,0 +1,4 @@
+# Minimal Ghostty configuration
+font-family = "JetBrainsMono Nerd Font"
+font-size = 16
+theme = tokyonight
