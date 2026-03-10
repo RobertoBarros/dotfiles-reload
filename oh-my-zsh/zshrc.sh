@@ -1,5 +1,9 @@
 ZSH="$HOME/.oh-my-zsh"
 
+# Interactive shell entrypoint.
+# Also loads env.sh because some terminals start zsh without login mode.
+source "${${(%):-%N}:A:h}/env.sh"
+
 plugins=(
   git gitfast last-working-dir common-aliases
   history-substring-search
