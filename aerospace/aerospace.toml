@@ -31,8 +31,6 @@ inner.vertical = 15
 # f3 = '''exec-and-forget open -a "WezTerm"'''
 # f4 = '''exec-and-forget open -a "ChatGPT"'''
 
-shift-f1 = '''exec-and-forget $HOME/code/dotfiles-reload/open_chrome_in_tab.sh localhost'''
-
 alt-comma = 'layout accordion horizontal vertical'
 alt-slash = 'layout tiles horizontal vertical'
 
@@ -75,7 +73,7 @@ alt-m = ['''exec-and-forget open -a "Google Meet"''', 'workspace M']
 alt-s = ['''exec-and-forget open -a "Spotify"''', 'workspace S']
 alt-v = ['''exec-and-forget open -a "ChatGPT"''', 'workspace V']
 alt-w = ['''exec-and-forget open -a "WhatsApp"''', 'workspace W']
-alt-x = ['''exec-and-forget open -a "WezTerm"''', 'workspace X']
+alt-x = ['''exec-and-forget open -a "cmux"''', 'workspace X']
 alt-y = ['''exec-and-forget open -a "Youtube"''', 'workspace Y']
 alt-z = ['''exec-and-forget open -a "Google Chrome"''', 'workspace Z']
 
@@ -100,6 +98,7 @@ alt-shift-x = ['move-node-to-workspace X', 'workspace X']
 alt-shift-y = ['move-node-to-workspace Y', 'workspace Y']
 alt-shift-z = ['move-node-to-workspace Z', 'workspace Z']
 
+alt-ctrl-z = '''exec-and-forget $HOME/code/dotfiles-reload/open_chrome_in_tab.sh localhost'''
 alt-n = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_first_empty_workspace.sh'''
 alt-shift-n = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_first_empty_workspace.sh move'''
 
@@ -150,7 +149,7 @@ if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
+if.app-id = 'com.cmuxterm.app'
 run = 'move-node-to-workspace X'
 
 [[on-window-detected]]
