@@ -1,8 +1,8 @@
 start-at-login = true
 
-after-startup-command = [
-  'exec-and-forget borders active_color=0xffFF4500 inactive_color=0xffdcdcdc width=8.0 hidpi=on',
-]
+# after-startup-command = [
+#   'exec-and-forget borders active_color=0xffFF4500 inactive_color=0xffdcdcdc width=8.0 hidpi=on',
+# ]
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -20,16 +20,16 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = 15
 inner.vertical = 15
-outer.bottom = 10
-outer.left = 10
-outer.right = 10
-outer.top = 2
+# outer.bottom = 10
+# outer.left = 10
+# outer.right = 10
+# outer.top = 2
 
 [mode.main.binding]
 # f1 = '''exec-and-forget open -a "Google Chrome"'''
 # f2 = '''exec-and-forget open -a "Visual Studio Code"'''
 # f3 = '''exec-and-forget open -a "WezTerm"'''
-f4 = '''exec-and-forget open -a "ChatGPT"'''
+# f4 = '''exec-and-forget open -a "ChatGPT"'''
 
 shift-f1 = '''exec-and-forget $HOME/code/dotfiles-reload/open_chrome_in_tab.sh localhost'''
 
@@ -66,18 +66,20 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-c = ['''exec-and-forget open -a "Google Chrome"''', 'workspace C']
+
+alt-c = ['''exec-and-forget open -a "Code"''', 'workspace C']
 alt-f = ['''exec-and-forget open -a "Finder"''']
 alt-g = ['''exec-and-forget open -a "Gmail"''', 'workspace G']
 alt-k = ['''exec-and-forget open -a "Slack"''', 'workspace K']
 alt-m = ['''exec-and-forget open -a "Google Meet"''', 'workspace M']
 alt-n = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_first_empty_workspace.sh'''
 alt-s = ['''exec-and-forget open -a "Spotify"''', 'workspace S']
-alt-t = ['''exec-and-forget open -a "WezTerm"''', 'workspace T']
-alt-v = ['''exec-and-forget open -a "Code"''', 'workspace V']
+alt-t = 'workspace T'
+alt-v = ['''exec-and-forget open -a "ChatGPT"''', 'workspace V']
 alt-w = ['''exec-and-forget open -a "WhatsApp"''', 'workspace W']
-alt-x = ['''exec-and-forget open -a "X"''', 'workspace X']
+alt-x = ['''exec-and-forget open -a "WezTerm"''', 'workspace X']
 alt-y = ['''exec-and-forget open -a "Youtube"''', 'workspace Y']
+alt-z = ['''exec-and-forget open -a "Google Chrome"''', 'workspace Z']
 
 alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -99,6 +101,7 @@ alt-shift-v = ['move-node-to-workspace V', 'workspace V']
 alt-shift-w = ['move-node-to-workspace W', 'workspace W']
 alt-shift-x = ['move-node-to-workspace X', 'workspace X']
 alt-shift-y = ['move-node-to-workspace Y', 'workspace Y']
+alt-shift-z = ['move-node-to-workspace Z', 'workspace Z']
 
 alt-left = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_nonempty_workspace.sh prev'''
 alt-right = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_nonempty_workspace.sh next'''
@@ -140,19 +143,19 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = 'move-node-to-workspace C'
+run = 'move-node-to-workspace Z'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = 'move-node-to-workspace V'
+run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
-run = 'move-node-to-workspace T'
+run = 'move-node-to-workspace X'
 
 [[on-window-detected]]
 if.app-id = 'com.openai.chat'
-run = 'move-node-to-workspace 3'
+run = 'move-node-to-workspace V'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
