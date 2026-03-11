@@ -1,8 +1,10 @@
 ZSH="$HOME/.oh-my-zsh"
 
-# Interactive shell entrypoint.
-# Also loads env.sh because some terminals start zsh without login mode.
-source "${${(%):-%N}:A:h}/env.sh"
+for brew_bin in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+  [[ -x "$brew_bin" ]] && eval "$("$brew_bin" shellenv)" && break
+done
+
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 plugins=(
   git gitfast last-working-dir common-aliases
