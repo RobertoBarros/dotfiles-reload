@@ -1,4 +1,7 @@
 # Minimal Ghostty configuration
 font-family = "JetBrainsMono Nerd Font"
 font-size = 14
-theme = Catppuccin Frappe
+theme = TokyoNight Moon
+copy-on-select = clipboard
+selection-background = #b7c14f
+selection-foreground = #000000

@@ -65,17 +65,18 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 
-alt-c = ['''exec-and-forget open -a "Code"''', 'workspace C']
 alt-f = ['''exec-and-forget open -a "Finder"''']
 alt-g = ['''exec-and-forget open -a "Gmail"''', 'workspace G']
 alt-k = ['''exec-and-forget open -a "Slack"''', 'workspace K']
 alt-m = ['''exec-and-forget open -a "Google Meet"''', 'workspace M']
 alt-s = ['''exec-and-forget open -a "Spotify"''', 'workspace S']
-alt-v = ['''exec-and-forget open -a "ChatGPT"''', 'workspace V']
 alt-w = ['''exec-and-forget open -a "WhatsApp"''', 'workspace W']
-alt-x = ['''exec-and-forget open -a "cmux"''', 'workspace X']
 alt-y = ['''exec-and-forget open -a "Youtube"''', 'workspace Y']
-alt-z = ['''exec-and-forget open -a "Google Chrome"''', 'workspace Z']
+f1 = ['''exec-and-forget open -a "Google Chrome"''', 'workspace C']
+f2 = ['''exec-and-forget open -a "Visual Studio Code"''', 'workspace V']
+f3 = ['''exec-and-forget open -a "cmux"''', 'workspace T']
+f4 = ['''exec-and-forget open -a "ChatGPT"''', 'workspace H']
+shift-f1 = '''exec-and-forget $HOME/code/dotfiles-reload/open_chrome_in_tab.sh localhost'''
 
 alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -98,7 +99,6 @@ alt-shift-x = ['move-node-to-workspace X', 'workspace X']
 alt-shift-y = ['move-node-to-workspace Y', 'workspace Y']
 alt-shift-z = ['move-node-to-workspace Z', 'workspace Z']
 
-alt-ctrl-z = '''exec-and-forget $HOME/code/dotfiles-reload/open_chrome_in_tab.sh localhost'''
 alt-n = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_first_empty_workspace.sh'''
 alt-shift-n = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_first_empty_workspace.sh move'''
 
@@ -142,19 +142,19 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = 'move-node-to-workspace Z'
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace V'
+
+[[on-window-detected]]
 if.app-id = 'com.cmuxterm.app'
-run = 'move-node-to-workspace X'
+run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
 if.app-id = 'com.openai.chat'
-run = 'move-node-to-workspace V'
+run = 'move-node-to-workspace H'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
