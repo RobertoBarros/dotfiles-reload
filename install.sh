@@ -157,7 +157,6 @@ install_vscode_extensions
 SYMLINKS=(
   "${DOTFILES_ROOT}/visual-studio-code/settings.json:$HOME/Library/Application Support/Code/User/settings.json"
   "${DOTFILES_ROOT}/elgato-stream-deck/ProfilesV2:$HOME/Library/Application Support/com.elgato.StreamDeck/ProfilesV2"
-  "${DOTFILES_ROOT}/oh-my-zsh/zprofile.sh:$HOME/.zprofile"
   "${DOTFILES_ROOT}/oh-my-zsh/zshrc.sh:$HOME/.zshrc"
   "${DOTFILES_ROOT}/oh-my-zsh/aliases.sh:$HOME/.aliases"
   "${DOTFILES_ROOT}/wezterm/wezterm.lua:$HOME/.wezterm.lua"
