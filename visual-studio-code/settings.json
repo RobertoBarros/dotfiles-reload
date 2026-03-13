@@ -12,7 +12,7 @@
   "editor.minimap.enabled": false, // Desativa minimapa lateral para evitar poluição visual
   "editor.quickSuggestions": {
     "other": "on",
-    "strings": "on"
+    "strings": "on",
   },
   "editor.renderControlCharacters": true, // Mostra caracteres de controle invisíveis
   "editor.rulers": [80, 120], // Linhas guia para respeitar limites de linha (padrão de projetos)
@@ -24,27 +24,27 @@
   // ===== ERB/HTML/JS/JSON/CSS: formatters =====
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[erb]": {
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[ruby]": {},
 
@@ -66,15 +66,15 @@
     "selectionRanges": true, // Expande seleção por contexto sintático
     "semanticHighlighting": true, // Realce semântico extra
     "signatureHelp": true, // Mostra parâmetros de métodos/funções
-    "workspaceSymbol": true // Busca símbolos no projeto inteiro
+    "workspaceSymbol": true, // Busca símbolos no projeto inteiro
   }, // Ativa todas as features úteis do LSP para Ruby
   "rubyLsp.rubyVersionManager": {
-    "identifier": "mise" // Usa mise para gerenciar versões Ruby
+    "identifier": "mise", // Usa mise para gerenciar versões Ruby
   },
 
   // ===== Emmet =====
   "emmet.includeLanguages": {
-    "erb": "html" // Permite autocomplete do Emmet em arquivos ERB
+    "erb": "html", // Permite autocomplete do Emmet em arquivos ERB
   },
   "emmet.showSuggestionsAsSnippets": true, // Mostra sugestões Emmet como snippets
   "emmet.triggerExpansionOnTab": true, // Expande abreviações Emmet ao apertar Tab
@@ -85,12 +85,12 @@
     "css": "css",
     "erb": "html",
     "html": "html",
-    "javascript": "javascript"
+    "javascript": "javascript",
   }, // Ativa Tailwind em vários tipos de arquivo (erb, js, etc)
 
   // ===== Arquivos: Associação e exclusão =====
   "files.associations": {
-    "*.html.erb": "erb" // Abre arquivos .html.erb com syntax highlight correto
+    "*.html.erb": "erb", // Abre arquivos .html.erb com syntax highlight correto
   },
   "files.autoSave": "onFocusChange", // Salva arquivo automaticamente ao perder foco (evita perder trabalho)
   "files.exclude": {
@@ -112,7 +112,7 @@
     "log": true,
     "node_modules": true,
     "public/packs": true,
-    "tmp": true
+    "tmp": true,
   }, // Esconde arquivos e pastas irrelevantes do explorer
   "files.hotExit": "off", // Não tenta restaurar arquivos não salvos ao fechar VSCode
   "files.insertFinalNewline": true, // Garante linha em branco no final de cada arquivo
@@ -125,7 +125,7 @@
     "**/log/**": true,
     "**/node_modules/**": true,
     "**/tmp/**": true,
-    "**/vendor/**": true
+    "**/vendor/**": true,
   }, // Ignora watcher para essas pastas/arquivos (menos uso de CPU)
 
   // ===== Terminal =====
@@ -138,9 +138,9 @@
   "workbench.colorCustomizations": {
     "tab.activeBackground": "#831911",
     "tab.activeBorder": "#FFEB3B",
-    "tab.activeForeground": "#FFEB3B"
+    "tab.activeForeground": "#FFEB3B",
   }, // Personaliza cor de abas ativas (maior contraste/visibilidade)
-  "workbench.colorTheme": "Tokyo Night", // Tema visual do VSCode
+  "workbench.colorTheme": "SynthWave '84", // Tema visual do VSCode
   "workbench.iconTheme": "vscode-great-icons", // Tema de ícones para arquivos e pastas
   "workbench.settings.editor": "json", // Editor de settings padrão em JSON
   "workbench.settings.openDefaultSettings": true, // Sempre abre settings defaults ao buscar configs
@@ -170,7 +170,7 @@
     "javascript": true,
     "ruby": true,
     "scss": true,
-    "yaml": true
+    "yaml": true,
   }, // Define onde o Copilot pode sugerir código/texto
 
   // ===== Outros =====
@@ -182,5 +182,6 @@
   "window.commandCenter": false,
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.smoothScrolling": true
+  "editor.smoothScrolling": true,
+  "terminal.integrated.initialHint": false,
 }
