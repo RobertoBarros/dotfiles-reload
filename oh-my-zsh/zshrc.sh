@@ -15,7 +15,7 @@ plugins=(
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="amuse"
 
 ZSH_DISABLE_COMPFIX=true # to avoid the message "compinit: insecure directories" when using brew
 
