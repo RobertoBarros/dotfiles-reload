@@ -7,6 +7,7 @@ alias serve='ruby -run -e httpd . -p 8000' # Or python -m SimpleHTTPServer :)
 
 alias gs='git status'
 alias gitclean='git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d && git remote prune origin'
+alias lg='lazygit'
 
 # https://github.com/eza-community/eza
 alias l='eza -l --icons --no-permissions --no-user --git -F'

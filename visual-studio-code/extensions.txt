@@ -25,6 +25,7 @@ ms-vsliveshare.vsliveshare
 nickdemayo.vscode-json-editor
 randomfractalsinc.vscode-data-preview
 rayhanw.erb-helpers
+robbowen.synthwave-vscode
 rubymaniac.vscode-paste-and-indent
 shd101wyy.markdown-preview-enhanced
 shopify.ruby-lsp

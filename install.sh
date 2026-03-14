@@ -73,9 +73,9 @@ install_brew_pkgs() {
   brew install --cask jordanbaird-ice
   brew install --cask wezterm
   brew install --cask cmux
-  brew tap FelixKratz/formulae # JankyBorders for aerospace
-  brew install borders
   brew install --cask nikitabobko/tap/aerospace
+  # brew tap FelixKratz/formulae # JankyBorders for aerospace
+  # brew install borders
   log_ok "brew packages installed"
 }
 
