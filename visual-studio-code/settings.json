@@ -135,11 +135,7 @@
   "terminal.integrated.fontSize": 16, // Tamanho da fonte do terminal para melhor legibilidade
 
   // ===== Workbench (UI/UX) =====
-  "workbench.colorCustomizations": {
-    "tab.activeBackground": "#831911",
-    "tab.activeBorder": "#FFEB3B",
-    "tab.activeForeground": "#FFEB3B",
-  }, // Personaliza cor de abas ativas (maior contraste/visibilidade)
+
   "workbench.colorTheme": "SynthWave '84", // Tema visual do VSCode
   "workbench.iconTheme": "vscode-great-icons", // Tema de ícones para arquivos e pastas
   "workbench.settings.editor": "json", // Editor de settings padrão em JSON
