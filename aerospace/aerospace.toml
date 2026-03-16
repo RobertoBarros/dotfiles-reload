@@ -102,8 +102,8 @@ alt-shift-z = ['move-node-to-workspace Z', 'workspace Z']
 alt-n = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_first_empty_workspace.sh'''
 alt-shift-n = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_first_empty_workspace.sh move'''
 
-alt-left = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_nonempty_workspace.sh prev'''
-alt-right = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_nonempty_workspace.sh next'''
+alt-shift-left = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_nonempty_workspace.sh prev'''
+alt-shift-right = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/go_to_nonempty_workspace.sh next'''
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-tab = 'workspace-back-and-forth'
 ctrl-alt-r = 'flatten-workspace-tree'

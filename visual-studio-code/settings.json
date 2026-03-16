@@ -180,4 +180,5 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.smoothScrolling": true,
   "terminal.integrated.initialHint": false,
+  "claudeCode.preferredLocation": "panel",
 }
