@@ -40,4 +40,11 @@ dbkill() {
                          AND pid <> pg_backend_pid();"
 }
 
+# Setas fazem busca incremental pelo prefixo.
+# Mostra somente comandos anteriores que começam com o que já digitou.
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
 unalias lt # para usar o localtunnel
