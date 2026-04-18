@@ -80,8 +80,8 @@ f1 = ['''exec-and-forget open -a "Google Chrome"''', 'workspace C']
 f2 = ['''exec-and-forget open -a "Visual Studio Code"''', 'workspace V']
 f3 = ['''exec-and-forget open -a "cmux"''', 'workspace T']
 f4 = ['''exec-and-forget open -a "ChatGPT"''', 'workspace H']
+f5 = ['''exec-and-forget open -a "Claude"''', 'workspace H']
 shift-f1 = '''exec-and-forget $HOME/code/dotfiles-reload/open_chrome_in_tab.sh localhost'''
-shift-f4 = ['''exec-and-forget open -a "Claude"''', 'workspace H']
 
 alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
