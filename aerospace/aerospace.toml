@@ -134,6 +134,11 @@ down = 'volume down'
 shift-down = ['volume set 0', 'mode main']
 up = 'volume up'
 
+# Godot preview window
+[[on-window-detected]]
+if.window-title-regex-substring = "\\(DEBUG\\)"
+run = "layout floating"
+
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
 run = 'layout floating'
