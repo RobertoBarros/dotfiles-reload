@@ -40,6 +40,28 @@ dbkill() {
                          AND pid <> pg_backend_pid();"
 }
 
+copyimage() {
+  local file="$(realpath "$1")"
+  local ext="${file##*.}"
+
+  case "${ext:l}" in
+    png)
+      osascript <<EOF
+set the clipboard to (read POSIX file "$file" as «class PNGf»)
+EOF
+      ;;
+    jpg|jpeg)
+      osascript <<EOF
+set the clipboard to (read POSIX file "$file" as JPEG picture)
+EOF
+      ;;
+    *)
+      echo "Unsupported format: $ext"
+      return 1
+      ;;
+  esac
+}
+
 # Setas fazem busca incremental pelo prefixo.
 # Mostra somente comandos anteriores que começam com o que já digitou.
 autoload -U up-line-or-beginning-search
