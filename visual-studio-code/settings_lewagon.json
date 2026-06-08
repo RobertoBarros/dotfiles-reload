@@ -167,7 +167,6 @@
   // ===== Outros =====
   "security.workspace.trust.untrustedFiles": "open",
   "explorer.confirmDelete": false,
-  "chat.disableAIFeatures": true,
   "workbench.activityBar.location": "top",
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",

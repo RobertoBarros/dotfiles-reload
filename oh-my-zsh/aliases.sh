@@ -16,6 +16,8 @@ alias lll='yazi'
 
 alias remove-node-modules="find . -name "node_modules" -type d -prune -exec rm -rf '{}' +"
 
+alias aseprite='open -a Aseprite'
+
 # Alterar configuração do VSCode
 alias vsconf="$HOME/code/dotfiles-reload/visual-studio-code/switch_vscode_config.sh"
 
