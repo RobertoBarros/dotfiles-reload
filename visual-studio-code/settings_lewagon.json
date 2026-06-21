@@ -140,7 +140,7 @@
     "tab.activeBorder": "#FFEB3B",
     "tab.activeForeground": "#FFEB3B",
   }, // Personaliza cor de abas ativas (maior contraste/visibilidade)
-  "workbench.colorTheme": "Solarized Espresso Soda", // Tema visual do VSCode
+  "workbench.colorTheme": "Solarized Light", // Tema visual do VSCode
   "workbench.iconTheme": "vscode-great-icons", // Tema de ícones para arquivos e pastas
   "workbench.settings.editor": "json", // Editor de settings padrão em JSON
   "workbench.settings.openDefaultSettings": true, // Sempre abre settings defaults ao buscar configs
@@ -172,4 +172,5 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.smoothScrolling": true,
   "window.commandCenter": false,
+  "chat.disableAIFeatures": true,
 }
