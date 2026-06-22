@@ -4,7 +4,7 @@
   "editor.detectIndentation": false, // Sempre usa o tamanho de tab definido, ignora autodetecção do arquivo
   "editor.fontLigatures": true, // Usa ligaduras de fonte para melhorar leitura (ex: !=, ->)
   "editor.fontFamily": "JetBrainsMono Nerd Font, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 15, // Tamanho da fonte maior para facilitar leitura
+  "editor.fontSize": 14, // Tamanho da fonte maior para facilitar leitura
   "editor.foldingStrategy": "indentation", // Dobra de código baseada na indentação (útil para Ruby, JS, etc)
   "editor.formatOnSave": true, // Formata automaticamente ao salvar, mantém código padronizado
   "editor.guides.bracketPairs": true, // Mostra linhas guias entre colchetes, facilita localizar blocos
