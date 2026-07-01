@@ -1,3 +1,5 @@
+config-version = 2
+
 start-at-login = true
 
 # after-startup-command = [
@@ -10,6 +12,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 30
 
 automatically-unhide-macos-hidden-apps = false
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'C', 'G', 'H', 'K', 'M', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z']
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -192,6 +195,7 @@ run = ['move-node-to-workspace M', 'layout tiling']
 
 # Apps not matched above open as floating by default.
 [[on-window-detected]]
+if = 'true'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
