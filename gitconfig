@@ -54,3 +54,5 @@
 	name = Roberto Barros
 [init]
 	defaultBranch = master
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
