@@ -21,6 +21,11 @@ ZSH_DISABLE_COMPFIX=true # to avoid the message "compinit: insecure directories"
 
 source "$ZSH/oh-my-zsh.sh"
 
+# Show how many local commits have not been pushed to the branch upstream.
+ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX="%{$fg_bold[yellow]%} ⇡"
+ZSH_THEME_GIT_COMMITS_AHEAD_SUFFIX="%{$reset_color%}"
+PROMPT=${PROMPT/'$(git_prompt_info)'/'$(git_prompt_info)$(git_commits_ahead)'}
+
 
 ##### 1) Variáveis de ambiente gerais  #################################################
 export HOMEBREW_NO_ANALYTICS=1
