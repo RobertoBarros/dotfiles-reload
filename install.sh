@@ -184,6 +184,7 @@ SYMLINKS=(
   "${DOTFILES_ROOT}/oh-my-zsh/zshrc.sh:$HOME/.zshrc"
   "${DOTFILES_ROOT}/oh-my-zsh/aliases.sh:$HOME/.aliases"
   "${DOTFILES_ROOT}/wezterm/wezterm.lua:$HOME/.wezterm.lua"
+  "${DOTFILES_ROOT}/cmux/cmux.json:$HOME/.config/cmux/cmux.json"
   "${DOTFILES_ROOT}/ghostty/config:$HOME/.config/ghostty/config"
   "${DOTFILES_ROOT}/aerospace/aerospace.toml:$HOME/.aerospace.toml"
   "${DOTFILES_ROOT}/gitconfig:$HOME/.gitconfig"

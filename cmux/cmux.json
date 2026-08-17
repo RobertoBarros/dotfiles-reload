@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion": 1,
+  "shortcuts": {
+    "bindings": {
+      "focusLeft": "cmd+ctrl+left",
+      "focusRight": "cmd+ctrl+right",
+      "focusUp": "cmd+ctrl+up",
+      "focusDown": "cmd+ctrl+down",
+      "prevSurface": "cmd+opt+left",
+      "nextSurface": "cmd+opt+right"
+    }
+  }
+}
