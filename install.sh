@@ -148,7 +148,7 @@ set_macos_defaults() {
 
   # Dock
   defaults write com.apple.dock autohide-time-modifier -float 0
-  defaults write com.apple.dock autohide-delay -float 0
+  defaults write com.apple.dock autohide-delay -float 0.5
   defaults write com.apple.dock springboard-show-duration -float 0
   defaults write com.apple.dock springboard-hide-duration -float 0
   defaults write com.apple.dock springboard-page-duration -float 0
