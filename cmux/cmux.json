@@ -7,6 +7,8 @@
       "focusRight": "cmd+ctrl+right",
       "focusUp": "cmd+ctrl+up",
       "focusDown": "cmd+ctrl+down",
+      "prevSidebarTab": "cmd+opt+up",
+      "nextSidebarTab": "cmd+opt+down",
       "prevSurface": "cmd+opt+left",
       "nextSurface": "cmd+opt+right"
     }
