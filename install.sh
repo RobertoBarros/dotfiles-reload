@@ -47,6 +47,27 @@ require() {
   fi
 }
 
+check_dependencies() {
+  section "Checking dependencies"
+  local bin
+  for bin in "$@"; do
+    require "$bin"
+  done
+}
+
+usage() {
+  printf "Usage: ./install.sh [target]\n\n"
+  printf "Targets:\n"
+  printf "  all      Install everything (default)\n"
+  printf "  brew     Install Homebrew packages\n"
+  printf "  mise     Configure Mise toolchains\n"
+  printf "  skills   Install the Skills CLI and global agent skills\n"
+  printf "  macos    Apply macOS defaults\n"
+  printf "  vscode   Install VS Code extensions\n"
+  printf "  links    Create configuration symlinks\n"
+  printf "  help     Show this help\n"
+}
+
 link_one() {
   local src="$1" dest="$2"
   log_step "linking: $dest"
@@ -88,6 +109,26 @@ configure_mise() {
   mise use -g yarn
   mise use -g python
   log_ok "mise configured"
+}
+
+install_global_skills() {
+  section "Global agent skills"
+  local list="${DOTFILES_ROOT}/skills.txt"
+  local skill_spec
+  [[ -f "$list" ]] || die "skills.txt not found: $list"
+
+  log_step "installing Skills CLI"
+  mise use -g npm:skills
+
+  while IFS= read -r skill_spec || [[ -n "$skill_spec" ]]; do
+    [[ -n "${skill_spec// }" ]] || continue
+    [[ "$skill_spec" == \#* ]] && continue
+
+    log_step "installing global skill: $skill_spec"
+    mise exec -- skills add "$skill_spec" --global --agent codex claude-code --yes </dev/null
+  done < "$list"
+
+  log_ok "global agent skills installed"
 }
 
 set_macos_defaults() {
@@ -162,20 +203,10 @@ link_batch() {
 }
 
 # ---------- main ----------
-section "Checking dependencies"
-require defaults
-require brew
-require mise
-require xargs
-require code
-
 DOTFILES_ROOT="${DOTFILES_ROOT:-$PWD}"
+TARGET="${1:-all}"
+(( $# <= 1 )) || die "only one target can be installed at a time"
 log "DOTFILES_ROOT: $DOTFILES_ROOT"
-
-install_brew_pkgs
-configure_mise
-set_macos_defaults
-install_vscode_extensions
 
 # Declare symlinks here. Format: "SRC:DEST"
 SYMLINKS=(
@@ -192,8 +223,48 @@ SYMLINKS=(
   "${DOTFILES_ROOT}/ssh/config:$HOME/.ssh/config"
 )
 
-link_batch
+case "$TARGET" in
+  all)
+    check_dependencies defaults brew mise xargs code
+    install_brew_pkgs
+    configure_mise
+    install_global_skills
+    set_macos_defaults
+    install_vscode_extensions
+    link_batch
 
-section "Restarting shell"
-log_step "exec zsh"
-exec zsh
+    section "Restarting shell"
+    log_step "exec zsh"
+    exec zsh
+    ;;
+  brew)
+    check_dependencies brew
+    install_brew_pkgs
+    ;;
+  mise)
+    check_dependencies mise
+    configure_mise
+    ;;
+  skills)
+    check_dependencies mise
+    install_global_skills
+    ;;
+  macos)
+    check_dependencies defaults
+    set_macos_defaults
+    ;;
+  vscode)
+    check_dependencies code
+    install_vscode_extensions
+    ;;
+  links)
+    link_batch
+    ;;
+  help|-h|--help)
+    usage
+    ;;
+  *)
+    usage
+    die "unknown target: $TARGET"
+    ;;
+esac

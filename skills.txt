@@ -1,0 +1,6 @@
+vercel-labs/skills@find-skills
+szkocot/andrej-karpathy-skills@karpathy-guidelines
+RobertoBarros/skills@tool-pick
+juliusbrussee/caveman@caveman
+mackswendhell/humanizer-pt-br@humanizer-pt-br
+0x0funky/agent-sprite-forge@generate2dsprite
