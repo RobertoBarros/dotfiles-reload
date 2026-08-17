@@ -28,14 +28,13 @@ O script:
 - Configura toolchains via Mise
 - Aplica defaults do macOS
 - Instala extensões do VS Code a partir de `visual-studio-code/extensions.txt`
-- Cria symlinks para zsh, WezTerm, Ghostty, VS Code, Aerospace e Stream Deck
+- Cria symlinks para zsh, WezTerm, Ghostty, VS Code e Aerospace
 
 ## Symlinks criados
 
 | Origem (`$DOTFILES_ROOT`)        | Destino (`$HOME`)                                              |
 | -------------------------------- | -------------------------------------------------------------- |
 | visual-studio-code/settings.json | ~/Library/Application Support/Code/User/settings.json          |
-| elgato-stream-deck/ProfilesV2    | ~/Library/Application Support/com.elgato.StreamDeck/ProfilesV2 |
 | oh-my-zsh/zprofile.sh            | ~/.zprofile                                                    |
 | oh-my-zsh/zshrc.sh               | ~/.zshrc                                                       |
 | oh-my-zsh/aliases.sh             | ~/.aliases                                                     |
