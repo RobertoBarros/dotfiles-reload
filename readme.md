@@ -4,6 +4,69 @@ Configuração pessoal para preparar um Mac como ambiente de desenvolvimento, co
 
 > Este repositório contém preferências pessoais e deve ser revisado antes da instalação, principalmente a identidade do Git, a configuração SSH e os atalhos do AeroSpace.
 
+## Atalhos rápidos
+
+Nos atalhos do AeroSpace, `Caps` representa `Cmd + Option + Control` por meio do Hyperkey.
+
+### Abrir aplicativos
+
+| Atalho | Aplicativo/ação |
+| --- | --- |
+| `F1` ou `Caps+C` | Abre o Google Chrome no workspace C |
+| `F2` ou `Caps+V` | Abre o Visual Studio Code no workspace V |
+| `F3` ou `Caps+T` | Abre o cmux no workspace T |
+| `F4` ou `Caps+H` | Abre o ChatGPT no workspace H |
+| `Caps+F` | Abre o Finder |
+| `Caps+G` | Abre o Gmail no workspace G |
+| `Caps+K` | Abre o Slack no workspace K |
+| `Caps+M` | Abre o Google Meet no workspace M |
+| `Caps+S` | Abre o Spotify no workspace S |
+| `Caps+W` | Abre o WhatsApp no workspace W |
+| `Caps+Y` | Abre o YouTube no workspace Y |
+| `Caps+F1` | Abre `localhost:3000` em uma aba do Chrome |
+
+### AeroSpace — janelas e workspaces
+
+| Atalho | Ação |
+| --- | --- |
+| `Caps+Setas` | Move o foco entre as janelas |
+| `Caps+Shift+Setas` | Move a janela na direção escolhida |
+| `Caps+1` até `Caps+0` | Vai para os workspaces 1 a 10 |
+| `Caps+Shift+1` até `Caps+Shift+0` | Move a janela para o workspace escolhido |
+| `Caps+N` | Vai para o primeiro workspace vazio |
+| `Caps+Shift+N` | Move a janela para o primeiro workspace vazio |
+| `Caps+[` / `Caps+]` | Vai para o workspace não vazio anterior/seguinte |
+| `Caps+Tab` | Alterna entre o workspace atual e o anterior |
+| `Caps+Shift+Tab` | Move o workspace para o próximo monitor |
+| `Caps+,` / `Caps+/` | Usa layout accordion/tiles |
+| `Caps+=` / `Caps+-` | Aumenta/diminui o tamanho da janela |
+| `Caps+R` | Reorganiza a árvore de janelas |
+| `Caps+Enter` | Ativa ou desativa tela cheia |
+| `Caps+Shift+F` | Alterna entre janela flutuante e lado a lado |
+| `Caps+Shift+E` | Entra no modo de serviço do AeroSpace |
+
+A lista completa, incluindo movimentação para workspaces nomeados e comandos do modo de serviço, está em [`aerospace/cheatsheet.md`](aerospace/cheatsheet.md).
+
+### WezTerm
+
+| Atalho | Ação |
+| --- | --- |
+| `Cmd+Option+←/→` | Alterna entre as abas |
+| `Cmd+D` | Divide o painel horizontalmente |
+| `Cmd+Shift+D` | Divide o painel verticalmente |
+| `Shift+Setas` | Move o foco entre os painéis |
+| `Cmd+W` | Fecha o painel atual sem confirmação |
+| `Cmd+K` | Limpa o histórico e a área visível |
+| `Cmd+F` | Pesquisa no terminal |
+
+### cmux
+
+| Atalho | Ação |
+| --- | --- |
+| `Cmd+Control+Setas` | Move o foco entre os painéis |
+| `Cmd+Option+↑/↓` | Alterna entre as abas da barra lateral |
+| `Cmd+Option+←/→` | Alterna entre as superfícies |
+
 ## O que o instalador faz
 
 Ao executar [`install.sh`](install.sh), o script:
