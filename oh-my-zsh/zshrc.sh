@@ -29,6 +29,8 @@ PROMPT=${PROMPT/'$(git_prompt_info)'/'$(git_prompt_info)$(git_commits_ahead)'}
 
 ##### 1) Variáveis de ambiente gerais  #################################################
 export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_ASK=1
+export HOMEBREW_NO_ENV_HINTS=1
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export BUNDLER_EDITOR=code
