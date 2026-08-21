@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
   "schemaVersion": 1,
-  "activePaneBorderColor": "#636DA6",
+  "activePaneBorderColor": "#737AA2",
   "shortcuts": {
     "bindings": {
       "focusLeft": "cmd+ctrl+left",
