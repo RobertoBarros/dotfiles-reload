@@ -57,6 +57,7 @@
 | `Caps+M`       | Open **Google Meet** and go to workspace M        |
 | `Caps+S`       | Open **Spotify** and go to workspace S            |
 | `Caps+W`       | Open **WhatsApp** and go to workspace W           |
+| `Caps+X`       | Open **X** and go to workspace X                  |
 | `Caps+Y`       | Open **Youtube** and go to workspace Y            |
 | `Caps+F1`      | Open localhost in **Chrome** tab                  |
 
