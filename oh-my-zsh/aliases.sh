@@ -20,6 +20,7 @@ alias aseprite='open -a Aseprite'
 
 # Alterar configuração do VSCode
 alias vsconf="$HOME/code/dotfiles-reload/visual-studio-code/switch_vscode_config.sh"
+alias sandbox="$HOME/code/dotfiles-reload/sandbox"
 
 # Muda o título da tab do WezTerm
 tab() {

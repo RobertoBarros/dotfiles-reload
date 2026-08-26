@@ -220,6 +220,17 @@ Os links mantêm o repositório como fonte das configurações. Alterações fei
 | `irbrc` | `~/.irbrc` |
 | `rspec` | `~/.rspec` |
 | `ssh/config` | `~/.ssh/config` |
+### Docker Sandboxes
+
+Na pasta de um projeto, o comando `sandbox` usa o nome dessa pasta como nome do sandbox e publica `localhost:3000`:
+
+```bash
+sandbox create codex
+sandbox start
+sandbox stop
+sandbox remove
+sandbox hunk # executa hunk diff --watch dentro do sandbox
+```
 
 ### Preferências do macOS
 
