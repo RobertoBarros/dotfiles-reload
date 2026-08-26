@@ -17,6 +17,7 @@ Uso: sandbox <comando>
 
   create <agent>  Cria o sandbox para o agente e publica a porta 3000
   start   Inicia e conecta ao agente do sandbox
+  shell   Abre um shell interativo no sandbox
   stop    Para o sandbox preservando seu estado
   remove  Remove o sandbox da pasta atual
   hunk    Executa hunk diff --watch dentro do sandbox
@@ -51,6 +52,12 @@ start() {
   sbx run --name "$SANDBOX_NAME"
 }
 
+open_shell() {
+  exists || die "sandbox não existe: $SANDBOX_NAME; execute: sandbox create <agent>"
+  sbx exec -it --workdir "$PROJECT_DIR" "$SANDBOX_NAME" /bin/sh -c \
+    'if command -v zsh >/dev/null 2>&1; then exec zsh; elif command -v bash >/dev/null 2>&1; then exec bash; else exec sh; fi'
+}
+
 hunk_watch() {
   exists || die "sandbox não existe: $SANDBOX_NAME; execute: sandbox create <agent>"
   sbx exec -it --workdir "$PROJECT_DIR" "$SANDBOX_NAME" hunk diff --watch
@@ -61,6 +68,7 @@ require_sbx
 case "${1:-}" in
   create) create "${2:-}" ;;
   start) start ;;
+  shell) open_shell ;;
   stop)
     exists || die "sandbox não existe: $SANDBOX_NAME"
     sbx stop "$SANDBOX_NAME"

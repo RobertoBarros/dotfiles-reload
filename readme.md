@@ -227,6 +227,7 @@ Na pasta de um projeto, o comando `sandbox` usa o nome dessa pasta como nome do 
 ```bash
 sandbox create codex
 sandbox start
+sandbox shell # abre um shell interativo dentro do sandbox
 sandbox stop
 sandbox remove
 sandbox hunk # executa hunk diff --watch dentro do sandbox
