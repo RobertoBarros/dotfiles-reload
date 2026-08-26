@@ -227,6 +227,7 @@ Na pasta de um projeto, o comando `sandbox` usa o nome dessa pasta como nome do 
 ```bash
 sandbox create codex
 sandbox start
+sandbox port 3001 # troca a porta publicada para localhost:3001
 sandbox shell # abre um shell interativo dentro do sandbox
 sandbox stop
 sandbox remove
