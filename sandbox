@@ -50,6 +50,7 @@ create() {
 
 start() {
   exists || die "sandbox não existe: $SANDBOX_NAME; execute: sandbox create <agent>"
+  sbx skills import --force >/dev/null
   sbx run --name "$SANDBOX_NAME"
 }
 
