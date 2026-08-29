@@ -31,35 +31,36 @@
 
 ## Workspaces
 
-| Shortcut                               | Action                                             |
-| -------------------------------------- | -------------------------------------------------- |
-| `Caps+1` ... `Caps+0`                  | Go to workspace 1 ... 10                           |
-| `Caps+Shift+1` ... `Caps+Shift+0`      | Move window to workspace 1 ... 10 and go there     |
-| `Caps+Shift + C/G/H/K/M/S/T/V/W/X/Y/Z` | Move window to the matching workspace and go there |
-| `Caps+Tab`                             | Back and forth between workspaces                  |
-| `Caps+Shift+Tab`                       | Move workspace to next monitor                     |
-| `Caps+N`                               | Go to first empty workspace                        |
-| `Caps+Shift+N`                         | Move window to first empty workspace               |
-| `Caps+[`                               | Go to previous non-empty workspace                 |
-| `Caps+]`                               | Go to next non-empty workspace                     |
+| Shortcut                  | Action                                         |
+| ------------------------- | ---------------------------------------------- |
+| `F1` ... `F10`            | Go to workspace 1 ... 10                       |
+| `Shift+F1` ... `Shift+F10` | Move window to workspace 1 ... 10 and go there |
+| `Caps+Tab`                | Back and forth between workspaces              |
+| `Caps+Shift+Tab`          | Move workspace to next monitor                 |
+| `Caps+N`                  | Go to first empty workspace                    |
+| `Caps+Shift+N`            | Move window to first empty workspace           |
+| `Caps+[`                  | Go to previous non-empty workspace             |
+| `Caps+]`                  | Go to next non-empty workspace                 |
 
 ## Apps
 
-| Shortcut       | Action                                            |
-| -------------- | ------------------------------------------------- |
-| `F1`, `Caps+C` | Open **Google Chrome** and go to workspace C      |
-| `F2`, `Caps+V` | Open **Visual Studio Code** and go to workspace V |
-| `F3`, `Caps+T` | Open **cmux** and go to workspace T               |
-| `F4`, `Caps+H` | Open **ChatGPT** and go to workspace H            |
-| `Caps+F`       | Open **Finder**                                   |
-| `Caps+G`       | Open **Gmail** and go to workspace G              |
-| `Caps+K`       | Open **Slack** and go to workspace K              |
-| `Caps+M`       | Open **Google Meet** and go to workspace M        |
-| `Caps+S`       | Open **Spotify** and go to workspace S            |
-| `Caps+W`       | Open **WhatsApp** and go to workspace W           |
-| `Caps+X`       | Open **X** and go to workspace X                  |
-| `Caps+Y`       | Open **Youtube** and go to workspace Y            |
-| `Caps+F1`      | Open localhost in **Chrome** tab                  |
+| Shortcut | Action                                      |
+| -------- | ------------------------------------------- |
+| `Caps+C` | Open **Google Chrome**                      |
+| `Caps+F` | Open **Finder** in the current workspace    |
+| `Caps+G` | Open **Gmail**                              |
+| `Caps+H` | Open **ChatGPT**                            |
+| `Caps+K` | Open **Slack**                              |
+| `Caps+L` | Open localhost in an existing **Chrome** tab |
+| `Caps+M` | Open **Google Meet**                        |
+| `Caps+S` | Open **Spotify**                            |
+| `Caps+T` | Open **cmux**                               |
+| `Caps+V` | Open **Visual Studio Code**                 |
+| `Caps+W` | Open **WhatsApp**                           |
+| `Caps+X` | Open **X**                                  |
+| `Caps+Y` | Open **YouTube**                            |
+
+Closed apps, except Finder, open in the next empty workspace. Existing apps activate their current window.
 
 ## Service Mode
 

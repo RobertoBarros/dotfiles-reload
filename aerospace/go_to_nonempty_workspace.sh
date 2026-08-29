@@ -19,11 +19,7 @@ esac
 
 workspaces=(
   1 2 3 4 5 6 7 8 9 10
-  C F G K M S V W X Y Z
 )
-
-
-
 
 current_workspace="$(aerospace list-workspaces --focused | head -n1)"
 workspace_count="${#workspaces[@]}"

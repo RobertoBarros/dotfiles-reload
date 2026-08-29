@@ -12,19 +12,21 @@ Nos atalhos do AeroSpace, `Caps` representa `Cmd + Option + Control` por meio do
 
 | Atalho | Aplicativo/ação |
 | --- | --- |
-| `F1` ou `Caps+C` | Abre o Google Chrome no workspace C |
-| `F2` ou `Caps+V` | Abre o Visual Studio Code no workspace V |
-| `F3` ou `Caps+T` | Abre o cmux no workspace T |
-| `F4` ou `Caps+H` | Abre o ChatGPT no workspace H |
-| `Caps+F` | Abre o Finder |
-| `Caps+G` | Abre o Gmail no workspace G |
-| `Caps+K` | Abre o Slack no workspace K |
-| `Caps+M` | Abre o Google Meet no workspace M |
-| `Caps+S` | Abre o Spotify no workspace S |
-| `Caps+W` | Abre o WhatsApp no workspace W |
-| `Caps+X` | Abre o X no workspace X |
-| `Caps+Y` | Abre o YouTube no workspace Y |
-| `Caps+F1` | Abre `localhost:3000` em uma aba do Chrome |
+| `Caps+C` | Abre o Google Chrome |
+| `Caps+F` | Abre o Finder no workspace atual |
+| `Caps+G` | Abre o Gmail |
+| `Caps+H` | Abre o ChatGPT |
+| `Caps+K` | Abre o Slack |
+| `Caps+L` | Abre `localhost:3000` em uma aba do Chrome |
+| `Caps+M` | Abre o Google Meet |
+| `Caps+S` | Abre o Spotify |
+| `Caps+T` | Abre o cmux |
+| `Caps+V` | Abre o Visual Studio Code |
+| `Caps+W` | Abre o WhatsApp |
+| `Caps+X` | Abre o X |
+| `Caps+Y` | Abre o YouTube |
+
+Aplicativos fechados, exceto o Finder, abrem no próximo workspace vazio. Aplicativos já abertos ativam sua janela existente.
 
 ### AeroSpace — janelas e workspaces
 
@@ -32,8 +34,8 @@ Nos atalhos do AeroSpace, `Caps` representa `Cmd + Option + Control` por meio do
 | --- | --- |
 | `Caps+Setas` | Move o foco entre as janelas |
 | `Caps+Shift+Setas` | Move a janela na direção escolhida |
-| `Caps+1` até `Caps+0` | Vai para os workspaces 1 a 10 |
-| `Caps+Shift+1` até `Caps+Shift+0` | Move a janela para o workspace escolhido |
+| `F1` até `F10` | Vai para os workspaces 1 a 10 |
+| `Shift+F1` até `Shift+F10` | Move a janela para o workspace escolhido e vai até ele |
 | `Caps+N` | Vai para o primeiro workspace vazio |
 | `Caps+Shift+N` | Move a janela para o primeiro workspace vazio |
 | `Caps+[` / `Caps+]` | Vai para o workspace não vazio anterior/seguinte |
@@ -46,7 +48,7 @@ Nos atalhos do AeroSpace, `Caps` representa `Cmd + Option + Control` por meio do
 | `Caps+Shift+F` | Alterna entre janela flutuante e lado a lado |
 | `Caps+Shift+E` | Entra no modo de serviço do AeroSpace |
 
-A lista completa, incluindo movimentação para workspaces nomeados e comandos do modo de serviço, está em [`aerospace/cheatsheet.md`](aerospace/cheatsheet.md).
+A lista completa, incluindo os comandos do modo de serviço, está em [`aerospace/cheatsheet.md`](aerospace/cheatsheet.md).
 
 ### WezTerm
 
@@ -126,7 +128,7 @@ São instaladas 35 extensões voltadas principalmente a Ruby/Rails, ERB, Stimulu
 | Mise | Gerencia as linguagens e ativa os runtimes no Zsh |
 | Ghostty | Recebe tema, fonte e preferências por link simbólico |
 | Google Chrome | É usado pelo script de abertura de abas e por atalhos do AeroSpace |
-| ChatGPT, Slack, Spotify e WhatsApp | Possuem atalhos e workspaces dedicados no AeroSpace |
+| ChatGPT, Slack, Spotify e WhatsApp | Possuem atalhos no AeroSpace |
 | Gmail, Google Meet e YouTube | Os atalhos esperam aplicativos web instalados pelo Chrome |
 
 ## Pré-requisitos
@@ -242,7 +244,7 @@ O script reduz ou desativa animações globais, do Dock e do Finder, ativa a red
 
 O Zsh é configurado com Oh My Zsh, ativação automática do Mise, busca de histórico por prefixo, integração do `fzf` e aliases para Git, `eza`, `yazi`, servidor HTTP local e tarefas comuns de desenvolvimento.
 
-O AeroSpace organiza aplicativos em workspaces dedicados e usa `Caps Lock` como Hyperkey (`Cmd + Option + Control`). Consulte todos os atalhos em [`aerospace/cheatsheet.md`](aerospace/cheatsheet.md).
+O AeroSpace organiza aplicativos em workspaces numéricos e usa `Caps Lock` como Hyperkey (`Cmd + Option + Control`). Consulte todos os atalhos em [`aerospace/cheatsheet.md`](aerospace/cheatsheet.md).
 
 ## Estrutura do repositório
 
