@@ -26,7 +26,7 @@ Nos atalhos do AeroSpace, `Caps` representa `Cmd + Option + Control` por meio do
 | `Caps+X` | Abre o X |
 | `Caps+Y` | Abre o YouTube |
 
-Aplicativos fechados, exceto o Finder, abrem no próximo workspace vazio. Aplicativos já abertos ativam sua janela existente.
+Aplicativos fechados abrem no workspace atual. Aplicativos já abertos ativam sua janela existente.
 
 ### AeroSpace — janelas e workspaces
 
@@ -35,9 +35,9 @@ Aplicativos fechados, exceto o Finder, abrem no próximo workspace vazio. Aplica
 | `Caps+Setas` | Move o foco entre as janelas |
 | `Caps+Shift+Setas` | Move a janela na direção escolhida |
 | `F1` até `F10` | Vai para os workspaces 1 a 10 |
-| `Shift+F1` até `Shift+F10` | Move a janela para o workspace escolhido e vai até ele |
-| `Caps+N` | Vai para o primeiro workspace vazio |
-| `Caps+Shift+N` | Move a janela para o primeiro workspace vazio |
+| `Caps+F1` até `Caps+F10` | Move a janela para o workspace escolhido e vai até ele |
+| `Caps+N` | Move a janela para o primeiro workspace vazio e vai até ele |
+| `Caps+Shift+N` | Vai para o primeiro workspace vazio |
 | `Caps+[` / `Caps+]` | Vai para o workspace não vazio anterior/seguinte |
 | `Caps+Tab` | Alterna entre o workspace atual e o anterior |
 | `Caps+Shift+Tab` | Move o workspace para o próximo monitor |

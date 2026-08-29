@@ -34,11 +34,11 @@
 | Shortcut                  | Action                                         |
 | ------------------------- | ---------------------------------------------- |
 | `F1` ... `F10`            | Go to workspace 1 ... 10                       |
-| `Shift+F1` ... `Shift+F10` | Move window to workspace 1 ... 10 and go there |
+| `Caps+F1` ... `Caps+F10` | Move window to workspace 1 ... 10 and go there |
 | `Caps+Tab`                | Back and forth between workspaces              |
 | `Caps+Shift+Tab`          | Move workspace to next monitor                 |
-| `Caps+N`                  | Go to first empty workspace                    |
-| `Caps+Shift+N`            | Move window to first empty workspace           |
+| `Caps+N`                  | Move window to first empty workspace and go there |
+| `Caps+Shift+N`            | Go to first empty workspace                       |
 | `Caps+[`                  | Go to previous non-empty workspace             |
 | `Caps+]`                  | Go to next non-empty workspace                 |
 
@@ -60,7 +60,7 @@
 | `Caps+X` | Open **X**                                  |
 | `Caps+Y` | Open **YouTube**                            |
 
-Closed apps, except Finder, open in the next empty workspace. Existing apps activate their current window.
+Closed apps open in the current workspace. Existing apps activate their current window.
 
 ## Service Mode
 
