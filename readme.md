@@ -13,6 +13,7 @@ Nos atalhos do AeroSpace, `Caps` representa `Cmd + Option + Control` por meio do
 | Atalho | Aplicativo/ação |
 | --- | --- |
 | `Caps+C` | Abre o Google Chrome |
+| `Caps+Shift+C` | Abre uma nova instância do Google Chrome como visitante |
 | `Caps+F` | Abre o Finder no workspace atual |
 | `Caps+G` | Abre o Gmail |
 | `Caps+H` | Abre o ChatGPT |
@@ -33,6 +34,7 @@ Aplicativos fechados abrem no workspace atual. Aplicativos já abertos ativam su
 | Atalho | Ação |
 | --- | --- |
 | `Caps+Setas` | Move o foco entre as janelas |
+| `Caps+\`` / `Caps+Shift+\`` | Alterna entre as janelas do mesmo aplicativo, avançando/voltando |
 | `Caps+Shift+Setas` | Move a janela na direção escolhida |
 | `F1` até `F10` | Vai para os workspaces 1 a 10 |
 | `Caps+F1` até `Caps+F10` | Move a janela para o workspace escolhido e vai até ele |

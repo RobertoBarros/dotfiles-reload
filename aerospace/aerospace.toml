@@ -36,6 +36,8 @@ cmd-alt-ctrl-down = 'focus down'
 cmd-alt-ctrl-left = 'focus left'
 cmd-alt-ctrl-right = 'focus right'
 cmd-alt-ctrl-up = 'focus up'
+cmd-alt-ctrl-backtick = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/focus_app_window.sh next'''
+cmd-alt-ctrl-shift-backtick = '''exec-and-forget $HOME/code/dotfiles-reload/aerospace/focus_app_window.sh prev'''
 
 cmd-alt-ctrl-shift-down = 'move down'
 cmd-alt-ctrl-shift-left = 'move left'
@@ -70,6 +72,7 @@ cmd-alt-ctrl-f9 = ['move-node-to-workspace 9', 'workspace 9']
 cmd-alt-ctrl-f10 = ['move-node-to-workspace 10', 'workspace 10']
 
 cmd-alt-ctrl-c = '''exec-and-forget open -a "Google Chrome"'''
+cmd-alt-ctrl-shift-c = '''exec-and-forget open -na "Google Chrome" --args --guest'''
 cmd-alt-ctrl-f = ['''exec-and-forget open -a "Finder"''']
 cmd-alt-ctrl-g = '''exec-and-forget open -a "Gmail"'''
 cmd-alt-ctrl-h = '''exec-and-forget open -a "ChatGPT"'''

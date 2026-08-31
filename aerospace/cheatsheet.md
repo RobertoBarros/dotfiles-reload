@@ -24,6 +24,8 @@
 | `Caps+Left`        | Focus left        |
 | `Caps+Right`       | Focus right       |
 | `Caps+Up`          | Focus up          |
+| `Caps+\``          | Next window of the current app |
+| `Caps+Shift+\``    | Previous window of the current app |
 | `Caps+Shift+Down`  | Move window down  |
 | `Caps+Shift+Left`  | Move window left  |
 | `Caps+Shift+Right` | Move window right |
@@ -47,6 +49,7 @@
 | Shortcut | Action                                      |
 | -------- | ------------------------------------------- |
 | `Caps+C` | Open **Google Chrome**                      |
+| `Caps+Shift+C` | Open a new **Google Chrome** guest instance |
 | `Caps+F` | Open **Finder** in the current workspace    |
 | `Caps+G` | Open **Gmail**                              |
 | `Caps+H` | Open **ChatGPT**                            |
