@@ -95,6 +95,7 @@ install_brew_pkgs() {
   brew install --cask wezterm
   brew install --cask cmux
   brew install --cask hyperkey
+  brew install --cask hammerspoon
   brew install --cask nikitabobko/tap/aerospace
   # brew tap FelixKratz/formulae # JankyBorders for aerospace
   # brew install borders
