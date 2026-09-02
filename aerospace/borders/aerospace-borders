@@ -1,0 +1,138 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+COMMAND_DIR="${0:A:h}"
+if [[ "${COMMAND_DIR:t}" == ".build" ]]; then
+  SCRIPT_DIR="${COMMAND_DIR:h}"
+else
+  SCRIPT_DIR="$COMMAND_DIR"
+fi
+BUILD_DIR="${SCRIPT_DIR}/.build"
+BINARY="${BUILD_DIR}/aerospace-borders-core"
+CONTROLLER="${BUILD_DIR}/aerospace-borders"
+PLIST="${BUILD_DIR}/com.roberto.aerospace-borders.plist"
+LOG_FILE="${BUILD_DIR}/aerospace-borders.log"
+LABEL="com.roberto.aerospace-borders"
+DOMAIN="gui/$(id -u)"
+SERVICE="${DOMAIN}/${LABEL}"
+
+die() {
+  print -u2 -- "aerospace-borders: $*"
+  exit 1
+}
+
+usage() {
+  cat <<'USAGE'
+Uso: aerospace-borders <comando> [opções da borda]
+
+  start [opções]  Compila e inicia o serviço residente
+  stop            Finaliza o serviço
+  restart         Reinicia o serviço
+  status          Exibe o estado do serviço
+  run [opções]    Executa em primeiro plano
+  logs            Exibe o log do serviço
+USAGE
+}
+
+is_loaded() {
+  launchctl print "$SERVICE" >/dev/null 2>&1
+}
+
+build_if_needed() {
+  if [[ ! -x "$BINARY"
+    || "$SCRIPT_DIR/main.swift" -nt "$BINARY"
+    || "$SCRIPT_DIR/build.sh" -nt "$BINARY"
+    || "$SCRIPT_DIR/aerospace-borders" -nt "$CONTROLLER" ]]; then
+    "$SCRIPT_DIR/build.sh"
+  fi
+}
+
+write_plist() {
+  local argument index=0
+
+  mkdir -p "$BUILD_DIR"
+  plutil -create xml1 "$PLIST"
+  plutil -insert Label -string "$LABEL" "$PLIST"
+  plutil -insert ProgramArguments -json '[]' "$PLIST"
+
+  for argument in "$BINARY" "$@"; do
+    plutil -insert "ProgramArguments.${index}" -string "$argument" "$PLIST"
+    (( ++index ))
+  done
+
+  plutil -insert RunAtLoad -bool true "$PLIST"
+  plutil -insert KeepAlive -bool true "$PLIST"
+  plutil -insert ProcessType -string Interactive "$PLIST"
+  plutil -insert LimitLoadToSessionType -string Aqua "$PLIST"
+  plutil -insert StandardOutPath -string "$LOG_FILE" "$PLIST"
+  plutil -insert StandardErrorPath -string "$LOG_FILE" "$PLIST"
+}
+
+start_service() {
+  is_loaded && die "serviço já está ativo"
+  build_if_needed
+  write_plist "$@"
+  launchctl bootstrap "$DOMAIN" "$PLIST"
+  print -- "aerospace-borders iniciado"
+}
+
+stop_service() {
+  is_loaded || die "serviço não está ativo"
+  launchctl bootout "$SERVICE"
+
+  local attempt
+  for attempt in {1..40}; do
+    is_loaded || break
+    sleep 0.05
+  done
+  is_loaded && die "não foi possível finalizar o serviço"
+
+  print -- "aerospace-borders finalizado"
+}
+
+status_service() {
+  if ! is_loaded; then
+    print -- "aerospace-borders parado"
+    return 1
+  fi
+
+  local state pid
+  state="$(launchctl print "$SERVICE" | awk '/state =/ { print $3; exit }')"
+  pid="$(launchctl print "$SERVICE" | awk '/pid =/ { print $3; exit }')"
+  print -- "aerospace-borders ${state:-carregado}${pid:+ (pid ${pid})}"
+}
+
+case "${1:-}" in
+  start)
+    shift
+    start_service "$@"
+    ;;
+  stop)
+    stop_service
+    ;;
+  restart)
+    shift
+    is_loaded && stop_service
+    start_service "$@"
+    ;;
+  status)
+    status_service
+    ;;
+  run)
+    shift
+    build_if_needed
+    exec "$BINARY" "$@"
+    ;;
+  logs)
+    [[ -f "$LOG_FILE" ]] || die "log ainda não foi criado"
+    tail -f "$LOG_FILE"
+    ;;
+  help|-h|--help|'')
+    usage
+    ;;
+  *)
+    usage
+    die "comando desconhecido: $1"
+    ;;
+esac

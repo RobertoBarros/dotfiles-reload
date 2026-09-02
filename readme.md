@@ -248,6 +248,14 @@ O Zsh é configurado com Oh My Zsh, ativação automática do Mise, busca de his
 
 O AeroSpace organiza aplicativos em workspaces numéricos e usa `Caps Lock` como Hyperkey (`Cmd + Option + Control`). Consulte todos os atalhos em [`aerospace/cheatsheet.md`](aerospace/cheatsheet.md).
 
+O serviço de bordas permanece residente sob supervisão do `launchd`:
+
+```zsh
+aerospace-borders start
+aerospace-borders status
+aerospace-borders stop
+```
+
 ## Estrutura do repositório
 
 ```text

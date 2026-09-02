@@ -23,10 +23,10 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = 15
 inner.vertical = 15
-# outer.bottom = 10
-# outer.left = 10
-# outer.right = 10
-# outer.top = 2
+outer.bottom = 15
+outer.left = 15
+outer.right = 15
+outer.top = 15
 
 [mode.main.binding]
 cmd-alt-ctrl-comma = 'layout accordion horizontal vertical'
