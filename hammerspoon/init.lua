@@ -1,6 +1,4 @@
-local holdDelay = 1
 local overlay = nil
-local showTimer = nil
 local shortcutGroups = {
   apps = {
     { key = "C", name = "Chrome", bundleID = "com.google.Chrome" },
@@ -58,10 +56,6 @@ local managementGroups = {
     },
   },
 }
-
-local function hyperIsPressed(flags)
-  return flags.cmd and flags.alt and flags.ctrl
-end
 
 local function showOverlay()
   local screenFrame = hs.mouse.getCurrentScreen():frame()
@@ -258,35 +252,10 @@ local function showOverlay()
 end
 
 local function hideOverlay()
-  if showTimer then
-    showTimer:stop()
-    showTimer = nil
-  end
-
   if overlay then
     overlay:delete()
     overlay = nil
   end
 end
 
-local function scheduleOverlay()
-  if overlay or showTimer then
-    return
-  end
-
-  showTimer = hs.timer.doAfter(holdDelay, function()
-    showTimer = nil
-
-    if hyperIsPressed(hs.eventtap.checkKeyboardModifiers()) then
-      showOverlay()
-    end
-  end)
-end
-
-capsOverlayWatcher = hs.timer.doEvery(0.25, function()
-  if hyperIsPressed(hs.eventtap.checkKeyboardModifiers()) then
-    scheduleOverlay()
-  else
-    hideOverlay()
-  end
-end)
+capsOverlayHotkey = hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "/", showOverlay, hideOverlay)
