@@ -11,7 +11,7 @@ fi
 BUILD_DIR="${SCRIPT_DIR}/.build"
 BINARY="${BUILD_DIR}/aerospace-borders-core"
 CONTROLLER="${BUILD_DIR}/aerospace-borders"
-PLIST="${BUILD_DIR}/com.roberto.aerospace-borders.plist"
+PLIST="${HOME}/Library/LaunchAgents/com.roberto.aerospace-borders.plist"
 LOG_FILE="${BUILD_DIR}/aerospace-borders.log"
 LABEL="com.roberto.aerospace-borders"
 DOMAIN="gui/$(id -u)"
@@ -51,7 +51,7 @@ build_if_needed() {
 write_plist() {
   local argument index=0
 
-  mkdir -p "$BUILD_DIR"
+  mkdir -p "$BUILD_DIR" "${PLIST:h}"
   plutil -create xml1 "$PLIST"
   plutil -insert Label -string "$LABEL" "$PLIST"
   plutil -insert ProgramArguments -json '[]' "$PLIST"

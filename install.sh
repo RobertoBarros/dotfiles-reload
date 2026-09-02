@@ -203,6 +203,16 @@ link_batch() {
   log_ok "symlink creation completed ($total)"
 }
 
+configure_aerospace() {
+  section "AeroSpace"
+  local borders_controller="${DOTFILES_ROOT}/aerospace/borders/aerospace-borders"
+
+  "${DOTFILES_ROOT}/aerospace/borders/build.sh"
+  "$borders_controller" restart
+  open -a AeroSpace
+  log_ok "AeroSpace and borders configured to start at login"
+}
+
 # ---------- main ----------
 DOTFILES_ROOT="${DOTFILES_ROOT:-$PWD}"
 TARGET="${1:-all}"
@@ -228,13 +238,14 @@ SYMLINKS=(
 
 case "$TARGET" in
   all)
-    check_dependencies defaults brew mise xargs code
+    check_dependencies defaults brew mise xargs code swiftc launchctl plutil open
     install_brew_pkgs
     configure_mise
     install_global_skills
     set_macos_defaults
     install_vscode_extensions
     link_batch
+    configure_aerospace
 
     section "Restarting shell"
     log_step "exec zsh"

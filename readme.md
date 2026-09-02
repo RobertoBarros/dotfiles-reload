@@ -83,7 +83,8 @@ Ao executar [`install.sh`](install.sh), o script:
 5. altera preferências do macOS para reduzir animações e acelerar teclado, Dock e Finder;
 6. instala as extensões listadas em [`visual-studio-code/extensions.txt`](visual-studio-code/extensions.txt);
 7. cria links simbólicos entre este repositório e os arquivos de configuração no diretório pessoal;
-8. reinicia a sessão atual do Zsh.
+8. compila e inicia o serviço de bordas e abre o AeroSpace, ambos configurados para iniciar no login;
+9. reinicia a sessão atual do Zsh.
 
 ## Softwares instalados
 
