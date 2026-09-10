@@ -13,6 +13,24 @@ typealias NotifyProc = @convention(c) (
 @_silgen_name("SLSMainConnectionID")
 func SLSMainConnectionID() -> Int32
 
+@_silgen_name("SLSWindowQueryWindows")
+func SLSWindowQueryWindows(_ connection: Int32, _ windows: CFArray, _ options: UInt32) -> Unmanaged<CFTypeRef>?
+
+@_silgen_name("SLSWindowQueryResultCopyWindows")
+func SLSWindowQueryResultCopyWindows(_ query: CFTypeRef) -> Unmanaged<CFTypeRef>?
+
+@_silgen_name("SLSWindowIteratorAdvance")
+func SLSWindowIteratorAdvance(_ iterator: CFTypeRef) -> Bool
+
+@_silgen_name("SLSWindowIteratorGetParentID")
+func SLSWindowIteratorGetParentID(_ iterator: CFTypeRef) -> UInt32
+
+@_silgen_name("SLSWindowIteratorGetTags")
+func SLSWindowIteratorGetTags(_ iterator: CFTypeRef) -> UInt64
+
+@_silgen_name("SLSWindowIteratorGetAttributes")
+func SLSWindowIteratorGetAttributes(_ iterator: CFTypeRef) -> UInt64
+
 @_silgen_name("SLSRegisterNotifyProc")
 func SLSRegisterNotifyProc(
     _ proc: NotifyProc,
@@ -224,6 +242,28 @@ private func isMostlyVisible(_ frame: CGRect) -> Bool {
     return visibleArea / (frame.width * frame.height) >= 0.7
 }
 
+private func isMainWindow(_ id: UInt32) -> Bool {
+    let windowIDs = [NSNumber(value: id)] as CFArray
+    guard let query = SLSWindowQueryWindows(SLSMainConnectionID(), windowIDs, 0)?.takeRetainedValue(),
+          let iterator = SLSWindowQueryResultCopyWindows(query)?.takeRetainedValue(),
+          SLSWindowIteratorAdvance(iterator)
+    else { return false }
+
+    // SkyLight classification used by JankyBorders (src/misc/window.h).
+    // Require a document window; omit its additional allowance for modal panels.
+    // Layer zero alone also includes Chrome's omnibox and tab hover popups.
+    let tags = SLSWindowIteratorGetTags(iterator)
+    let attributes = SLSWindowIteratorGetAttributes(iterator)
+    let document: UInt64 = 1 << 0
+    let attached: UInt64 = 1 << 7
+    let ignoresCycle: UInt64 = 1 << 18
+    let modal: UInt64 = 1 << 31
+    return SLSWindowIteratorGetParentID(iterator) == 0
+        && (attributes & 0x2 != 0 || tags & 0x400000000000000 != 0)
+        && tags & document != 0
+        && tags & (attached | ignoresCycle | modal) == 0
+}
+
 private func validWindow(
     _ window: [String: Any],
     ownedBy pid: pid_t
@@ -234,7 +274,8 @@ private func validWindow(
           let frame = frame(from: window),
           frame.width > 60,
           frame.height > 60,
-          isMostlyVisible(frame)
+          isMostlyVisible(frame),
+          isMainWindow(UInt32(number))
     else { return nil }
 
     return FocusedWindow(id: UInt32(number), frame: frame)
