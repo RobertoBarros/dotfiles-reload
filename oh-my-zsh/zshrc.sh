@@ -52,5 +52,7 @@ $PATH"
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 ##### 5) Configurações específicas de programas  ######################################
-source <(fzf --zsh) # Fuzzy finder for ctrl+r
 export PATH="$HOME/.local/bin:$PATH"
+
+# source <(fzf --zsh) # Fuzzy finder for ctrl+r
+command -v atuin >/dev/null 2>&1 && eval "$(atuin init zsh)"
