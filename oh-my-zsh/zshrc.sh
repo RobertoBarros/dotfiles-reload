@@ -56,3 +56,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # source <(fzf --zsh) # Fuzzy finder for ctrl+r
 command -v atuin >/dev/null 2>&1 && eval "$(atuin init zsh)"
+
+# Added by Antigravity IDE
+export PATH="/Users/roberto/.antigravity-ide/antigravity-ide/bin:$PATH"

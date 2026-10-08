@@ -10,67 +10,67 @@ Nos atalhos do AeroSpace, `Caps` representa `Cmd + Option + Control` por meio do
 
 ### Abrir aplicativos
 
-| Atalho | Aplicativo/ação |
-| --- | --- |
-| `Caps+C` | Abre o Google Chrome |
+| Atalho         | Aplicativo/ação                                         |
+| -------------- | ------------------------------------------------------- |
+| `Caps+C`       | Abre o Google Chrome                                    |
 | `Caps+Shift+C` | Abre uma nova instância do Google Chrome como visitante |
-| `Caps+F` | Abre o Finder no workspace atual |
-| `Caps+G` | Abre o Gmail |
-| `Caps+H` | Abre o ChatGPT |
-| `Caps+K` | Abre o Slack |
-| `Caps+L` | Abre `localhost:3000` em uma aba do Chrome |
-| `Caps+M` | Abre o Google Meet |
-| `Caps+S` | Abre o Spotify |
-| `Caps+T` | Abre o cmux |
-| `Caps+V` | Abre o Visual Studio Code |
-| `Caps+W` | Abre o WhatsApp |
-| `Caps+X` | Abre o X |
-| `Caps+Y` | Abre o YouTube |
+| `Caps+F`       | Abre o Finder no workspace atual                        |
+| `Caps+G`       | Abre o Gmail                                            |
+| `Caps+H`       | Abre o ChatGPT                                          |
+| `Caps+K`       | Abre o Slack                                            |
+| `Caps+L`       | Abre `localhost:3000` em uma aba do Chrome              |
+| `Caps+M`       | Abre o Google Meet                                      |
+| `Caps+S`       | Abre o Spotify                                          |
+| `Caps+T`       | Abre o cmux                                             |
+| `Caps+V`       | Abre o Visual Studio Code                               |
+| `Caps+W`       | Abre o WhatsApp                                         |
+| `Caps+X`       | Abre o X                                                |
+| `Caps+Y`       | Abre o YouTube                                          |
 
 Aplicativos fechados abrem no workspace atual. Aplicativos já abertos ativam sua janela existente.
 
 ### AeroSpace — janelas e workspaces
 
-| Atalho | Ação |
-| --- | --- |
-| `Caps+Setas` | Move o foco entre as janelas |
+| Atalho                      | Ação                                                             |
+| --------------------------- | ---------------------------------------------------------------- |
+| `Caps+Setas`                | Move o foco entre as janelas                                     |
 | `Caps+\`` / `Caps+Shift+\`` | Alterna entre as janelas do mesmo aplicativo, avançando/voltando |
-| `Caps+Shift+Setas` | Move a janela na direção escolhida |
-| `F1` até `F10` | Vai para os workspaces 1 a 10 |
-| `Caps+F1` até `Caps+F10` | Move a janela para o workspace escolhido e vai até ele |
-| `Caps+N` | Move a janela para o primeiro workspace vazio e vai até ele |
-| `Caps+Shift+N` | Vai para o primeiro workspace vazio |
-| `Caps+[` / `Caps+]` | Vai para o workspace não vazio anterior/seguinte |
-| `Caps+Tab` | Alterna entre o workspace atual e o anterior |
-| `Caps+Shift+Tab` | Move o workspace para o próximo monitor |
-| `Caps+,` / `Caps+/` | Usa layout accordion/tiles |
-| `Caps+=` / `Caps+-` | Aumenta/diminui o tamanho da janela |
-| `Caps+R` | Reorganiza a árvore de janelas |
-| `Caps+Enter` | Ativa ou desativa tela cheia |
-| `Caps+Shift+F` | Alterna entre janela flutuante e lado a lado |
-| `Caps+Shift+E` | Entra no modo de serviço do AeroSpace |
+| `Caps+Shift+Setas`          | Move a janela na direção escolhida                               |
+| `F1` até `F10`              | Vai para os workspaces 1 a 10                                    |
+| `Caps+F1` até `Caps+F10`    | Move a janela para o workspace escolhido e vai até ele           |
+| `Caps+N`                    | Move a janela para o primeiro workspace vazio e vai até ele      |
+| `Caps+Shift+N`              | Vai para o primeiro workspace vazio                              |
+| `Caps+[` / `Caps+]`         | Vai para o workspace não vazio anterior/seguinte                 |
+| `Caps+Tab`                  | Alterna entre o workspace atual e o anterior                     |
+| `Caps+Shift+Tab`            | Move o workspace para o próximo monitor                          |
+| `Caps+,` / `Caps+/`         | Usa layout accordion/tiles                                       |
+| `Caps+=` / `Caps+-`         | Aumenta/diminui o tamanho da janela                              |
+| `Caps+R`                    | Reorganiza a árvore de janelas                                   |
+| `Caps+Enter`                | Ativa ou desativa tela cheia                                     |
+| `Caps+Shift+F`              | Alterna entre janela flutuante e lado a lado                     |
+| `Caps+Shift+E`              | Entra no modo de serviço do AeroSpace                            |
 
 A lista completa, incluindo os comandos do modo de serviço, está em [`aerospace/cheatsheet.md`](aerospace/cheatsheet.md).
 
 ### WezTerm
 
-| Atalho | Ação |
-| --- | --- |
-| `Cmd+Option+←/→` | Alterna entre as abas |
-| `Cmd+D` | Divide o painel horizontalmente |
-| `Cmd+Shift+D` | Divide o painel verticalmente |
-| `Shift+Setas` | Move o foco entre os painéis |
-| `Cmd+W` | Fecha o painel atual sem confirmação |
-| `Cmd+K` | Limpa o histórico e a área visível |
-| `Cmd+F` | Pesquisa no terminal |
+| Atalho           | Ação                                 |
+| ---------------- | ------------------------------------ |
+| `Cmd+Option+←/→` | Alterna entre as abas                |
+| `Cmd+D`          | Divide o painel horizontalmente      |
+| `Cmd+Shift+D`    | Divide o painel verticalmente        |
+| `Shift+Setas`    | Move o foco entre os painéis         |
+| `Cmd+W`          | Fecha o painel atual sem confirmação |
+| `Cmd+K`          | Limpa o histórico e a área visível   |
+| `Cmd+F`          | Pesquisa no terminal                 |
 
 ### cmux
 
-| Atalho | Ação |
-| --- | --- |
-| `Cmd+Control+Setas` | Move o foco entre os painéis |
-| `Cmd+Option+↑/↓` | Alterna entre as abas da barra lateral |
-| `Cmd+Option+←/→` | Alterna entre as superfícies |
+| Atalho              | Ação                                   |
+| ------------------- | -------------------------------------- |
+| `Cmd+Control+Setas` | Move o foco entre os painéis           |
+| `Cmd+Option+↑/↓`    | Alterna entre as abas da barra lateral |
+| `Cmd+Option+←/→`    | Alterna entre as superfícies           |
 
 ## O que o instalador faz
 
@@ -90,17 +90,16 @@ Ao executar [`install.sh`](install.sh), o script:
 
 ### Ferramentas e aplicativos via Homebrew
 
-| Grupo | Software | Objetivo |
-| --- | --- | --- |
-| Dependências de compilação | `openssl`, `libyaml`, `pkg-config` | Bibliotecas e metadados usados na compilação de runtimes e pacotes, especialmente Ruby |
-| Terminal e navegação | `eza`, `yazi`, `fzf` | Listagem moderna de arquivos, gerenciador de arquivos no terminal e busca interativa |
-| Git | `lazygit` | Interface de terminal para operações do Git |
-| Zsh | `zsh-syntax-highlighting`, `zsh-autosuggestions` | Destaque de comandos e sugestões baseadas no histórico |
-| Terminais | WezTerm e cmux | Emuladores/ambientes de terminal configurados pelo repositório |
-| Gerenciamento de janelas | AeroSpace | Organização automática das janelas em layouts e workspaces |
-| Atalhos | Hyperkey | Transforma uma tecla em `Cmd + Option + Control` para acionar os atalhos do AeroSpace |
-| Barra de menus | Ice | Organização dos ícones da barra de menus do macOS |
-| Fontes | Fira Code Nerd Font e JetBrains Mono Nerd Font | Fontes com ligaduras e ícones para editor e terminal |
+| Grupo                      | Software                                         | Objetivo                                                                               |
+| -------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| Dependências de compilação | `openssl`, `libyaml`, `pkg-config`               | Bibliotecas e metadados usados na compilação de runtimes e pacotes, especialmente Ruby |
+| Terminal e navegação       | `eza`, `yazi`, `fzf`                             | Listagem moderna de arquivos, gerenciador de arquivos no terminal e busca interativa   |
+| Git                        | `lazygit`                                        | Interface de terminal para operações do Git                                            |
+| Zsh                        | `zsh-syntax-highlighting`, `zsh-autosuggestions` | Destaque de comandos e sugestões baseadas no histórico                                 |
+| Terminais                  | WezTerm e cmux                                   | Emuladores/ambientes de terminal configurados pelo repositório                         |
+| Gerenciamento de janelas   | AeroSpace                                        | Organização automática das janelas em layouts e workspaces                             |
+| Atalhos                    | Hyperkey                                         | Transforma uma tecla em `Cmd + Option + Control` para acionar os atalhos do AeroSpace  |
+| Fontes                     | Fira Code Nerd Font e JetBrains Mono Nerd Font   | Fontes com ligaduras e ícones para editor e terminal                                   |
 
 ### Ferramentas via Mise
 
@@ -124,15 +123,15 @@ São instaladas 35 extensões voltadas principalmente a Ruby/Rails, ERB, Stimulu
 
 ### Softwares configurados, mas não instalados pelo script
 
-| Software | Como é usado |
-| --- | --- |
-| Oh My Zsh | Carrega o tema, plugins, aliases, autocomplete e destaque do shell |
-| Visual Studio Code | Recebe configurações e extensões; o comando `code` é obrigatório |
-| Mise | Gerencia as linguagens e ativa os runtimes no Zsh |
-| Ghostty | Recebe tema, fonte e preferências por link simbólico |
-| Google Chrome | É usado pelo script de abertura de abas e por atalhos do AeroSpace |
-| ChatGPT, Slack, Spotify e WhatsApp | Possuem atalhos no AeroSpace |
-| Gmail, Google Meet e YouTube | Os atalhos esperam aplicativos web instalados pelo Chrome |
+| Software                           | Como é usado                                                       |
+| ---------------------------------- | ------------------------------------------------------------------ |
+| Oh My Zsh                          | Carrega o tema, plugins, aliases, autocomplete e destaque do shell |
+| Visual Studio Code                 | Recebe configurações e extensões; o comando `code` é obrigatório   |
+| Mise                               | Gerencia as linguagens e ativa os runtimes no Zsh                  |
+| Ghostty                            | Recebe tema, fonte e preferências por link simbólico               |
+| Google Chrome                      | É usado pelo script de abertura de abas e por atalhos do AeroSpace |
+| ChatGPT, Slack, Spotify e WhatsApp | Possuem atalhos no AeroSpace                                       |
+| Gmail, Google Meet e YouTube       | Os atalhos esperam aplicativos web instalados pelo Chrome          |
 
 ## Pré-requisitos
 
@@ -184,15 +183,15 @@ Sem argumentos, o instalador executa todas as etapas. Para executar somente uma 
 
 Os alvos disponíveis são:
 
-| Alvo | Ação |
-| --- | --- |
-| `all` | Executa a instalação completa; é o padrão quando nenhum alvo é informado |
-| `brew` | Instala os pacotes e aplicativos do Homebrew |
-| `mise` | Instala e configura Ruby, Node.js, Yarn e Python |
+| Alvo     | Ação                                                                     |
+| -------- | ------------------------------------------------------------------------ |
+| `all`    | Executa a instalação completa; é o padrão quando nenhum alvo é informado |
+| `brew`   | Instala os pacotes e aplicativos do Homebrew                             |
+| `mise`   | Instala e configura Ruby, Node.js, Yarn e Python                         |
 | `skills` | Instala a CLI `skills` e as skills globais de [`skills.txt`](skills.txt) |
-| `macos` | Aplica as preferências do macOS |
-| `vscode` | Instala as extensões do VS Code |
-| `links` | Cria os links simbólicos das configurações |
+| `macos`  | Aplica as preferências do macOS                                          |
+| `vscode` | Instala as extensões do VS Code                                          |
+| `links`  | Cria os links simbólicos das configurações                               |
 
 Use `./install.sh help` para consultar essa lista no terminal.
 
@@ -212,19 +211,20 @@ Durante a criação dos links simbólicos, o instalador remove qualquer arquivo,
 
 Os links mantêm o repositório como fonte das configurações. Alterações feitas nos arquivos abaixo passam a valer diretamente nos respectivos aplicativos.
 
-| Arquivo no repositório | Destino no macOS |
-| --- | --- |
+| Arquivo no repositório             | Destino no macOS                                        |
+| ---------------------------------- | ------------------------------------------------------- |
 | `visual-studio-code/settings.json` | `~/Library/Application Support/Code/User/settings.json` |
-| `oh-my-zsh/zshrc.sh` | `~/.zshrc` |
-| `oh-my-zsh/aliases.sh` | `~/.aliases` |
-| `wezterm/wezterm.lua` | `~/.wezterm.lua` |
-| `cmux/cmux.json` | `~/.config/cmux/cmux.json` |
-| `ghostty/config` | `~/.config/ghostty/config` |
-| `aerospace/aerospace.toml` | `~/.aerospace.toml` |
-| `gitconfig` | `~/.gitconfig` |
-| `irbrc` | `~/.irbrc` |
-| `rspec` | `~/.rspec` |
-| `ssh/config` | `~/.ssh/config` |
+| `oh-my-zsh/zshrc.sh`               | `~/.zshrc`                                              |
+| `oh-my-zsh/aliases.sh`             | `~/.aliases`                                            |
+| `wezterm/wezterm.lua`              | `~/.wezterm.lua`                                        |
+| `cmux/cmux.json`                   | `~/.config/cmux/cmux.json`                              |
+| `ghostty/config`                   | `~/.config/ghostty/config`                              |
+| `aerospace/aerospace.toml`         | `~/.aerospace.toml`                                     |
+| `gitconfig`                        | `~/.gitconfig`                                          |
+| `irbrc`                            | `~/.irbrc`                                              |
+| `rspec`                            | `~/.rspec`                                              |
+| `ssh/config`                       | `~/.ssh/config`                                         |
+
 ### Docker Sandboxes
 
 Na pasta de um projeto, o comando `sandbox` usa o nome dessa pasta como nome do sandbox e publica `localhost:3000`:

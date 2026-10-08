@@ -91,7 +91,6 @@ install_brew_pkgs() {
   brew install zsh-syntax-highlighting zsh-autosuggestions
   brew install --cask font-fira-code-nerd-font
   brew install --cask font-jetbrains-mono-nerd-font
-  brew install --cask jordanbaird-ice
   brew install --cask wezterm
   brew install --cask cmux
   brew install --cask hyperkey
