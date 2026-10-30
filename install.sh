@@ -61,7 +61,6 @@ usage() {
   printf "  all      Install everything (default)\n"
   printf "  brew     Install Homebrew packages\n"
   printf "  mise     Configure Mise toolchains\n"
-  printf "  skills   Install the Skills CLI and global agent skills\n"
   printf "  macos    Apply macOS defaults\n"
   printf "  vscode   Install VS Code extensions\n"
   printf "  links    Create configuration symlinks\n"
@@ -108,26 +107,6 @@ configure_mise() {
   mise use -g yarn
   mise use -g python
   log_ok "mise configured"
-}
-
-install_global_skills() {
-  section "Global agent skills"
-  local list="${DOTFILES_ROOT}/skills.txt"
-  local skill_spec
-  [[ -f "$list" ]] || die "skills.txt not found: $list"
-
-  log_step "installing Skills CLI"
-  mise use -g npm:skills
-
-  while IFS= read -r skill_spec || [[ -n "$skill_spec" ]]; do
-    [[ -n "${skill_spec// }" ]] || continue
-    [[ "$skill_spec" == \#* ]] && continue
-
-    log_step "installing global skill: $skill_spec"
-    mise exec -- skills add "$skill_spec" --global --agent codex claude-code --yes </dev/null
-  done < "$list"
-
-  log_ok "global agent skills installed"
 }
 
 set_macos_defaults() {
@@ -239,7 +218,6 @@ case "$TARGET" in
     check_dependencies defaults brew mise xargs code swiftc launchctl plutil open
     install_brew_pkgs
     configure_mise
-    install_global_skills
     set_macos_defaults
     install_vscode_extensions
     link_batch
@@ -256,10 +234,6 @@ case "$TARGET" in
   mise)
     check_dependencies mise
     configure_mise
-    ;;
-  skills)
-    check_dependencies mise
-    install_global_skills
     ;;
   macos)
     check_dependencies defaults
