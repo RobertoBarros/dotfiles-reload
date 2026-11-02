@@ -146,6 +146,8 @@
   "workbench.settings.openDefaultSettings": true, // Sempre abre settings defaults ao buscar configs
   "workbench.settings.useSplitJSON": true, // Editor de settings dividido em duas colunas (user/project)
   "workbench.startupEditor": "newUntitledFile", // Sempre inicia com novo arquivo vazio
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.panel.opensMaximized": "never"
 
   // ===== Window =====
   "window.restoreWindows": "none", // Não restaura janelas abertas na última sessão, sempre fresh start
