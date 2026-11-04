@@ -79,12 +79,11 @@ Ao executar [`install.sh`](install.sh), o script:
 1. verifica se as dependências necessárias para o alvo escolhido estão disponíveis;
 2. instala ferramentas de linha de comando, aplicativos e fontes pelo Homebrew;
 3. instala e define versões globais de Ruby, Node.js, Yarn e Python pelo Mise;
-4. instala a CLI `skills` pelo Mise e aplica globalmente ao Codex e ao Claude Code as skills listadas em [`skills.txt`](skills.txt);
-5. altera preferências do macOS para reduzir animações e acelerar teclado, Dock e Finder;
-6. instala as extensões listadas em [`visual-studio-code/extensions.txt`](visual-studio-code/extensions.txt);
-7. cria links simbólicos entre este repositório e os arquivos de configuração no diretório pessoal;
-8. compila e inicia o serviço de bordas e abre o AeroSpace, ambos configurados para iniciar no login;
-9. reinicia a sessão atual do Zsh.
+4. altera preferências do macOS para reduzir animações e acelerar teclado, Dock e Finder;
+5. instala as extensões listadas em [`visual-studio-code/extensions.txt`](visual-studio-code/extensions.txt);
+6. cria links simbólicos entre este repositório e os arquivos de configuração no diretório pessoal;
+7. compila e inicia o serviço de bordas e abre o AeroSpace, ambos configurados para iniciar no login;
+8. reinicia a sessão atual do Zsh.
 
 ## Softwares instalados
 
@@ -109,13 +108,8 @@ O instalador configura globalmente as versões atuais disponíveis de:
 - Node.js
 - Yarn
 - Python
-- Skills CLI (`npm:skills`)
 
 Como as versões não estão fixadas no repositório, uma instalação futura pode escolher versões mais novas do que uma instalação anterior.
-
-### Skills de agentes
-
-O arquivo [`skills.txt`](skills.txt) mantém as skills globais no formato `repositorio@skill`. Durante a instalação, cada entrada é aplicada de forma não interativa ao Codex e ao Claude Code. Para reproduzir o conjunto em outra máquina, basta executar o instalador normalmente.
 
 ### Visual Studio Code
 
@@ -178,7 +172,7 @@ cd ~/code/dotfiles-reload
 Sem argumentos, o instalador executa todas as etapas. Para executar somente uma delas, informe o alvo desejado:
 
 ```bash
-./install.sh skills
+./install.sh brew
 ```
 
 Os alvos disponíveis são:
@@ -188,7 +182,6 @@ Os alvos disponíveis são:
 | `all`    | Executa a instalação completa; é o padrão quando nenhum alvo é informado |
 | `brew`   | Instala os pacotes e aplicativos do Homebrew                             |
 | `mise`   | Instala e configura Ruby, Node.js, Yarn e Python                         |
-| `skills` | Instala a CLI `skills` e as skills globais de [`skills.txt`](skills.txt) |
 | `macos`  | Aplica as preferências do macOS                                          |
 | `vscode` | Instala as extensões do VS Code                                          |
 | `links`  | Cria os links simbólicos das configurações                               |
@@ -269,7 +262,6 @@ aerospace-borders stop
 ├── visual-studio-code/  # Settings, perfil alternativo e extensões
 ├── wezterm/             # Tema, fonte, panes e atalhos do WezTerm
 ├── gitconfig            # Preferências e aliases globais do Git
-├── skills.txt           # Skills globais instaladas para os agentes
 └── install.sh           # Provisionamento do ambiente
 ```
 
@@ -278,7 +270,6 @@ aerospace-borders stop
 ```bash
 brew list
 mise ls
-skills list --global
 code --list-extensions
 ls -l ~/.zshrc ~/.gitconfig ~/.aerospace.toml
 ```
