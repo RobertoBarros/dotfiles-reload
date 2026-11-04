@@ -204,6 +204,7 @@ SYMLINKS=(
   "${DOTFILES_ROOT}/wezterm/wezterm.lua:$HOME/.wezterm.lua"
   "${DOTFILES_ROOT}/cmux/cmux.json:$HOME/.config/cmux/cmux.json"
   "${DOTFILES_ROOT}/ghostty/config:$HOME/.config/ghostty/config"
+  "${DOTFILES_ROOT}/herdr-app:$HOME/.config/herdr-app"
   "${DOTFILES_ROOT}/aerospace/aerospace.toml:$HOME/.aerospace.toml"
   "${DOTFILES_ROOT}/aerospace/borders/aerospace-borders:$HOME/.local/bin/aerospace-borders"
   "${DOTFILES_ROOT}/hammerspoon/init.lua:$HOME/.hammerspoon/init.lua"
