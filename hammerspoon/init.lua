@@ -13,7 +13,7 @@ local shortcutGroups = {
     { key = "F", name = "Finder", bundleID = "com.apple.finder" },
     { key = "H", name = "ChatGPT", bundleID = "com.openai.codex" },
     { key = "K", name = "Slack", bundleID = "com.tinyspeck.slackmacgap" },
-    { key = "T", name = "cmux", bundleID = "com.cmuxterm.app" },
+    { key = "T", name = "Herdr", bundleID = "dev.herdr.app" },
     { key = "V", name = "VS Code", bundleID = "com.microsoft.VSCode" },
   },
   media = {

@@ -57,7 +57,7 @@
 | `Caps+L` | Open localhost in an existing **Chrome** tab |
 | `Caps+M` | Open **Google Meet**                        |
 | `Caps+S` | Open **Spotify**                            |
-| `Caps+T` | Open **cmux**                               |
+| `Caps+T` | Open **Herdr**                              |
 | `Caps+V` | Open **Visual Studio Code**                 |
 | `Caps+W` | Open **WhatsApp**                           |
 | `Caps+X` | Open **X**                                  |
