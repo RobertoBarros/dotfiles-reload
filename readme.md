@@ -21,7 +21,7 @@ Nos atalhos do AeroSpace, `Caps` representa `Cmd + Option + Control` por meio do
 | `Caps+L`       | Abre `localhost:3000` em uma aba do Chrome              |
 | `Caps+M`       | Abre o Google Meet                                      |
 | `Caps+S`       | Abre o Spotify                                          |
-| `Caps+T`       | Abre o cmux                                             |
+| `Caps+T`       | Abre o Herdr                                            |
 | `Caps+V`       | Abre o Visual Studio Code                               |
 | `Caps+W`       | Abre o WhatsApp                                         |
 | `Caps+X`       | Abre o X                                                |
