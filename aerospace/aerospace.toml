@@ -145,6 +145,10 @@ if.app-id = 'com.cmuxterm.app'
 run = 'layout tiling'
 
 [[on-window-detected]]
+if.app-id = 'dev.herdr.app'
+run = 'layout tiling'
+
+[[on-window-detected]]
 if.app-id = 'com.openai.chat'
 run = 'layout tiling'
 
