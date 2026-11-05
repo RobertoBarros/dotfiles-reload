@@ -97,6 +97,7 @@ install_brew_pkgs() {
   brew install --cask hammerspoon
   brew install --cask nikitabobko/tap/aerospace
   brew install --cask thaw
+  brew install --cask vorssaint
   log_ok "brew packages installed"
 }
 
