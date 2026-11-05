@@ -96,8 +96,11 @@ Ao executar [`install.sh`](install.sh), o script:
 | Git                        | `lazygit`                                        | Interface de terminal para operações do Git                                            |
 | Zsh                        | `zsh-syntax-highlighting`, `zsh-autosuggestions` | Destaque de comandos e sugestões baseadas no histórico                                 |
 | Terminais                  | WezTerm e cmux                                   | Emuladores/ambientes de terminal configurados pelo repositório                         |
+| Terminais e agentes         | Herdr                                            | Aplicativo desktop para terminais e agentes de programação                            |
 | Gerenciamento de janelas   | AeroSpace                                        | Organização automática das janelas em layouts e workspaces                             |
 | Atalhos                    | Hyperkey                                         | Transforma uma tecla em `Cmd + Option + Control` para acionar os atalhos do AeroSpace  |
+| Barra de menus             | Thaw                                             | Gerencia os itens da barra de menus                                                   |
+| Utilitários                | Vorssaint                                        | Mantém o Mac acordado, monitora o sistema e controla o volume por aplicativo            |
 | Fontes                     | Fira Code Nerd Font e JetBrains Mono Nerd Font   | Fontes com ligaduras e ícones para editor e terminal                                   |
 
 ### Ferramentas via Mise

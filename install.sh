@@ -92,10 +92,12 @@ install_brew_pkgs() {
   brew install --cask font-jetbrains-mono-nerd-font
   brew install --cask wezterm
   brew install --cask cmux
+  brew install --cask herdr-app
   brew install --cask hyperkey
   brew install --cask hammerspoon
   brew install --cask nikitabobko/tap/aerospace
   brew install --cask thaw
+  brew install --cask vorssaint
   log_ok "brew packages installed"
 }
 
