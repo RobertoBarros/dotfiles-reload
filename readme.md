@@ -228,6 +228,12 @@ A pasta `herdr-app/` guarda as configurações do Herdr, incluindo atalhos, pref
 
 O `.gitignore` dessa pasta exclui caches, estado de sessão e arquivos gerados ou distribuídos pelo Herdr. Configurações pessoais, novos temas, layouts e mods podem ser versionados.
 
+O layout `numbered-spaces` usa o mod de mesmo nome para mostrar, antes do ícone de cada space, o número correspondente a `Ctrl+1` até `Ctrl+9`. Com o Herdr aberto, ative com:
+
+```bash
+herdr-app do layout.switch '{"name":"numbered-spaces"}'
+```
+
 ### Docker Sandboxes
 
 Na pasta de um projeto, o comando `sandbox` usa o nome dessa pasta como nome do sandbox e publica `localhost:3000`:
