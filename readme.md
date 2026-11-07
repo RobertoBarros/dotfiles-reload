@@ -224,9 +224,7 @@ Os links mantêm o repositório como fonte das configurações. Alterações fei
 
 ### Herdr
 
-A pasta `herdr-app/` guarda as configurações do Herdr, incluindo atalhos, preferências e o tema `synthwave-84`. O instalador cria o link da pasta inteira com `./install.sh links` (também incluído em `./install.sh`).
-
-O `.gitignore` dessa pasta exclui caches, estado de sessão e arquivos gerados ou distribuídos pelo Herdr. Configurações pessoais, novos temas, layouts e mods podem ser versionados.
+Herdr para organizar terminais, projetos e agentes de programação.
 
 ### Docker Sandboxes
 
