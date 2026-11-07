@@ -234,6 +234,8 @@ O layout `numbered-spaces` usa o mod de mesmo nome para mostrar, antes do ícone
 herdr-app do layout.switch '{"name":"numbered-spaces"}'
 ```
 
+Cada space mostra o nome, o caminho da pasta atual e a branch, nessa ordem. O diretório pessoal local é abreviado como `~`; caminhos longos usam reticências no meio e aparecem completos ao passar o cursor. Pastas fora de um repositório exibem “Sem repositório Git”; falhas na consulta exibem “Git indisponível”.
+
 ### Docker Sandboxes
 
 Na pasta de um projeto, o comando `sandbox` usa o nome dessa pasta como nome do sandbox e publica `localhost:3000`:

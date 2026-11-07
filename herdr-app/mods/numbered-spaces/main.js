@@ -5,7 +5,7 @@
 
 import { View, div, svg } from "gpui-kit";
 import { v_flex, h_flex } from "gpui-base";
-import { spaces, machines, panes, run, openOverlay, exec, hc, theme, shared, setShared, watchFolder, window, layout } from "herdr";
+import { spaces, machines, panes, run, openOverlay, exec, hc, theme, shared, setShared, watchFolder, window, layout, home } from "herdr";
 
 function find(node, id) {
   if (node?.id === id) return node;
@@ -25,7 +25,7 @@ function place(s, ps) {
   const tabs = new Set((s.tabs ?? []).map((c) => c.id));
   return ps.find((p) => tabs.has(p.tab) && p.cwd)?.cwd || s.folder;
 }
-const rowHeight = ({ tree }) => (tree ? 28 : 30);
+const rowHeight = ({ tree }) => (tree ? 60 : 62);
 const where = (s, ps) => JSON.stringify([s.machine ?? null, place(s, ps)]);
 const base = (path) => path.replace(/\/+$/, "").split("/").pop();
 // Changes made outside Herdr (an editor's save, a commit in another app): looked
@@ -345,24 +345,16 @@ export default class Spaces extends View {
     });
   }
 
-  // Only what's unusual, after the name: "herdr \u00b7 spike \u21912 \u21931". The repo or
-  // branch goes when the name already says it (a worktree is named after its branch),
-  // and master/main go: nearly every space is on one.
-  gitTail(g, tree, name, t) {
-    const raw = g.branch ?? "detached";
-    const same = (a) => a.toLowerCase() === name.toLowerCase();
-    const branch = same(raw) || raw === "master" || raw === "main" ? "" : raw;
-    const repo = tree || same(g.name) ? "" : g.name;
-    const where = [repo, branch].filter(Boolean).join(" \u00b7 ");
+  // Always show the branch below the folder, including main and master.
+  gitTail(g, t) {
     return h_flex()
       .flex_1()
       .min_w(0)
       .gap(5)
-      .justify_end()
       .items_center()
       .text_size(11.5)
       .text_color(t.dim)
-      .when(Boolean(where), (el) => el.child(div().min_w(0).truncate().child(where)))
+      .child(div().min_w(0).truncate().child(g.branch === "(detached)" ? "HEAD destacado" : (g.branch ?? "HEAD destacado")))
       .when(g.ahead > 0, (el) => el.child(div().flex_none().text_color(t.ansi2).child(`\u2191${g.ahead}`)))
       .when(g.behind > 0, (el) => el.child(div().flex_none().text_color(t.ansi1).child(`\u2193${g.behind}`)));
   }
@@ -373,6 +365,13 @@ export default class Spaces extends View {
     const colors = shared("space.colors") ?? {};
     const color = colors[w.id] ?? "ansi6";
     const fill = color.startsWith("#") ? color : (MARK[color] ?? t[color]);
+    const folder = place(w, panes());
+    const homeFolder = home();
+    const folderLabel = !w.machine && folder && (folder === homeFolder || folder.startsWith(`${homeFolder}/`))
+      ? `~${folder.slice(homeFolder.length)}` : folder;
+    const key = JSON.stringify([w.machine ?? null, folder]);
+    const gitStatus = key && this.unsure.has(key) ? "Git indisponível"
+      : key && !(key in this.git) ? "Verificando Git…" : "Sem repositório Git";
     return v_flex()
       .relative()
       .id(`space-${w.id}`)
@@ -419,9 +418,11 @@ export default class Spaces extends View {
           .items_center()
           .child(div().w(10).flex_none().text_size(11).text_color(t.dim).child(i < 9 ? String(i + 1) : ""))
           .when(Boolean(tree), el => el.pl(22).child(svg("mods/workspace-chrome/branch.svg").size(13).text_color(t.dim)))
-          .when(!tree, el => el.child(h_flex().size(18).flex_none().rounded(5).bg(fill).items_center().justify_center().text_size(10.5).font_bold().text_color("#ffffff").child([...w.name][0]?.toUpperCase() ?? "?")))
-          .child(div().flex_shrink(0).max_w(150).truncate().text_color(t.foreground).child(w.name))
-          .child(g ? this.gitTail(g, tree, w.name, t) : div().flex_1()),
+          .when(!tree, el => el.child(h_flex().size(30).flex_none().rounded(7).bg(fill).items_center().justify_center().text_size(17).font_bold().text_color("#ffffff").child([...w.name][0]?.toUpperCase() ?? "?")))
+          .child(v_flex().flex_1().min_w(0).gap(0)
+            .child(div().truncate().text_color(t.foreground).child(w.name))
+            .child(div().truncate().text_ellipsis_middle().text_size(11.5).text_color(t.muted).tooltip(folder ?? "Pasta indisponível").child(folderLabel || "Pasta indisponível"))
+            .child(g ? this.gitTail(g, t) : div().truncate().text_size(11.5).text_color(t.dim).child(gitStatus))),
       );
   }
 
