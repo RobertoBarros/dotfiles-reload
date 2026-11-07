@@ -224,17 +224,7 @@ Os links mantêm o repositório como fonte das configurações. Alterações fei
 
 ### Herdr
 
-A pasta `herdr-app/` guarda as configurações do Herdr, incluindo atalhos, preferências e o tema `synthwave-84`. O instalador cria o link da pasta inteira com `./install.sh links` (também incluído em `./install.sh`).
-
-O `.gitignore` dessa pasta exclui caches, estado de sessão e arquivos gerados ou distribuídos pelo Herdr. Configurações pessoais, novos temas, layouts e mods podem ser versionados.
-
-O layout `numbered-spaces` usa o mod de mesmo nome para mostrar, antes do ícone de cada space, o número correspondente a `Ctrl+1` até `Ctrl+9`. Com o Herdr aberto, ative com:
-
-```bash
-herdr-app do layout.switch '{"name":"numbered-spaces"}'
-```
-
-Cada space mostra o nome, o caminho da pasta atual e a branch, nessa ordem. O diretório pessoal local é abreviado como `~`; caminhos longos usam reticências no meio e aparecem completos ao passar o cursor. Pastas fora de um repositório exibem “Sem repositório Git”; falhas na consulta exibem “Git indisponível”.
+Herdr para organizar terminais, projetos e agentes de programação.
 
 ### Docker Sandboxes
 
