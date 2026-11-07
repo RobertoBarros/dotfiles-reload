@@ -41,13 +41,13 @@ export default class WorkspaceStatus extends View {
       const space = spaces().find(s => s.active);
       const agent = codexAgent(space, agents());
       this.refresh(cx, space, agent);
-      this.refreshSession(cx, agent);
+      this.refreshSession(cx, agent, space?.machine);
     };
     update(cx);
     cx.timer.every(1000, update);
   }
 
-  refreshSession(cx, agent) {
+  refreshSession(cx, agent, machine) {
     if (!agent || !window().active || this.sessionBusy) return;
     const previous = this.sessions[agent.address];
     if (Date.now() - (previous?.at ?? 0) < 5000) return;
@@ -55,8 +55,19 @@ export default class WorkspaceStatus extends View {
     cx.spawn(async cx => {
       let label = null;
       try {
+        this.sessionSource ??= await readTextFile(`${appHome()}/mods/codex-status/session.rb`);
+        const terminal = await hc(["get", agent.address, "--json"]);
+        if (terminal.code === 0) {
+          const result = await exec("ruby", ["-e", this.sessionSource, terminal.stdout], { on: machine });
+          if (result.code === 0) label = JSON.parse(result.stdout).label;
+        }
+      } catch {}
+      try {
         const result = await hc(["read", agent.address]);
-        if (result.code === 0) label = sessionLabel(result.stdout);
+        if (result.code === 0) {
+          const screenLabel = sessionLabel(result.stdout);
+          label = label ? label + (screenLabel?.match(/ · Context \d+% left$/)?.[0] ?? "") : screenLabel;
+        }
       } catch {}
       this.sessions[agent.address] = { label, at: Date.now() };
       this.sessionBusy = false;
