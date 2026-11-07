@@ -25,16 +25,15 @@ function place(s, ps) {
   const tabs = new Set((s.tabs ?? []).map((c) => c.id));
   return ps.find((p) => tabs.has(p.tab) && p.cwd)?.cwd || s.folder;
 }
-const rowHeight = ({ tree }) => (tree ? 60 : 62);
+const rowHeight = ({ tree }) => (tree ? 64 : 66);
 const where = (s, ps) => JSON.stringify([s.machine ?? null, place(s, ps)]);
 const base = (path) => path.replace(/\/+$/, "").split("/").pop();
 // Changes made outside Herdr (an editor's save, a commit in another app): looked
 // for this often, in repos the list shows, while the window is in front.
 const FALLBACK = 60000;
 
-// What a stored color name looks like on an avatar (the same in every mod
-// that draws space avatars): one strong color per hue, light and dark alike.
-const MARK = { ansi6: "#22a99a", ansi3: "#e3814f", ansi4: "#5b8def", ansi5: "#8b7cf6", ansi2: "#3fae6a", ansi1: "#d9649a" };
+// Muted avatar colors keep the space names visually prominent.
+const MARK = { ansi6: "#397f78", ansi3: "#a76e50", ansi4: "#5978ad", ansi5: "#7769ad", ansi2: "#4b805f", ansi1: "#a05d7e" };
 
 // A space speaks up only when something in it needs you.
 export function glyph(status) {
@@ -415,13 +414,12 @@ export default class Spaces extends View {
       .child(
         h_flex()
           .gap(9)
-          .items_center()
+          .items_start()
           .when(Boolean(tree), el => el.pl(22).child(svg("mods/workspace-chrome/branch.svg").size(13).text_color(t.dim)))
-          .when(!tree, el => el.child(h_flex().size(54).flex_none().rounded(9).bg(fill).items_center().justify_center().text_size(30).font_bold().text_color("#ffffff").child([...w.name][0]?.toUpperCase() ?? "?")))
+          .when(!tree, el => el.child(h_flex().size(32).flex_none().mt(2).rounded(8).bg(fill).items_center().justify_center().text_size(16).font_bold().text_color("#ffffff").child(String(i + 1))))
           .child(v_flex().flex_1().min_w(0).gap(0)
             .child(h_flex().min_w(0).gap(5).items_center()
-              .when(i < 9, el => el.child(div().w(10).flex_none().text_size(11).text_color(t.dim).child(String(i + 1))))
-              .child(div().min_w(0).truncate().text_color(t.foreground).child(w.name)))
+              .child(div().min_w(0).truncate().text_size(15).text_color(t.foreground).child(w.name)))
             .child(div().truncate().text_ellipsis_middle().text_size(11.5).text_color(t.muted).tooltip(folder ?? "Pasta indisponível").child(folderLabel || "Pasta indisponível"))
             .child(g ? this.gitTail(g, t) : div().truncate().text_size(11.5).text_color(t.dim).child(gitStatus))),
       );
