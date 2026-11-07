@@ -2,22 +2,21 @@ import { View, div, svg } from "gpui-kit";
 import { h_flex } from "gpui-base";
 import { spaces, agents, theme, run, window, keys, exec, readTextFile, appHome, hc } from "herdr";
 
-function codexAgent(space = spaces().find(s => s.active)) {
+function codexAgent(space, agentList) {
   if (!space) return null;
-  const list = agents().filter(a => a.space === space.id && (a.app === "codex" || a.program?.key === "codex"));
+  const list = agentList.filter(a => a.space === space.id && (a.app === "codex" || a.program?.key === "codex"));
   const tab = space.tabs?.find(t => t.active);
   return list.find(a => a.focused) ?? list.find(a => a.tab === tab?.id) ?? list[0] ?? null;
 }
 
-function codexSpace() {
-  const space = spaces().find(s => s.active);
-  return codexAgent(space) ? space : null;
-}
-
 export function sessionLabel(screen) {
   for (const line of screen.replace(/\x1b\[[0-?]*[ -/]*[@-~]/g, "").split("\n").reverse()) {
-    const match = line.match(/^\s*((?:GPT|gpt)-[\w.-]+)\s+(minimal|none|low|medium|high|xhigh|max|ultra)\s*·/);
-    if (match) return `${match[1]} ${match[2]}`;
+    const match = line.match(/^\s*((?:GPT|gpt)-[\w.-]+)\s+(minimal|none|low|medium|high|xhigh|max|ultra)\s*(?:·|$)/);
+    if (match) {
+      const context = line.match(/(?:^|·)\s*Context\s+(\d{1,3})%\s+left\b/);
+      const remaining = context && Number(context[1]) <= 100 ? ` · Context ${context[1]}% left` : "";
+      return `${match[1]} ${match[2]}${remaining}`;
+    }
   }
   return null;
 }
@@ -38,16 +37,17 @@ export default class WorkspaceStatus extends View {
     this.busy = false;
     this.sessions = {};
     this.sessionBusy = false;
-    this.refresh(cx);
-    this.refreshSession(cx);
-    cx.timer.every(1000, cx => {
-      this.refresh(cx);
-      this.refreshSession(cx);
-    });
+    const update = cx => {
+      const space = spaces().find(s => s.active);
+      const agent = codexAgent(space, agents());
+      this.refresh(cx, space, agent);
+      this.refreshSession(cx, agent);
+    };
+    update(cx);
+    cx.timer.every(1000, update);
   }
 
-  refreshSession(cx) {
-    const agent = codexAgent();
+  refreshSession(cx, agent) {
     if (!agent || !window().active || this.sessionBusy) return;
     const previous = this.sessions[agent.address];
     if (Date.now() - (previous?.at ?? 0) < 5000) return;
@@ -64,9 +64,8 @@ export default class WorkspaceStatus extends View {
     });
   }
 
-  refresh(cx) {
-    const space = codexSpace();
-    if (!space || !window().active || this.busy) return;
+  refresh(cx, space, agent) {
+    if (!agent || !window().active || this.busy) return;
     const machine = space.machine ?? "local";
     if (Date.now() - (this.usage[machine]?.at ?? 0) < 60000) return;
     this.busy = true;
@@ -99,8 +98,7 @@ export default class WorkspaceStatus extends View {
     const space = spaces().find(s => s.active);
     const list = agents();
     const needs = list.filter(a => a.status === "blocked").length;
-    const codex = codexSpace();
-    const agent = codexAgent(codex);
+    const agent = codexAgent(space, list);
     const model = agent && this.sessions[agent.address]?.label;
     const label = (icon, text) => h_flex().gap(6).items_center().child(svg(`mods/workspace-chrome/${icon}.svg`).size(13)).child(text);
     return h_flex().size_full().px(14).gap(16).items_center().bg(t.chrome).border_t(1).border_color(t.border).text_size(11.8).text_color(t.muted)
@@ -109,9 +107,9 @@ export default class WorkspaceStatus extends View {
       .child(h_flex().gap(6).items_center().child(div().size(6).rounded(3).bg(t.dim)).child(`${list.length} agents`)
         .when(needs > 0, el => el.child(div().text_color(t.blocked).child(`· ${needs} needs you`))))
       .child(div().flex_1())
-      .when(Boolean(codex), el => el.child(div().text_color(t.muted)
-        .tooltip("Modelo e esforço da sessão · limites da conta atualizados a cada minuto")
-        .child(`${model || "Codex"} · ${this.usage[codex.machine ?? "local"]?.label ?? "Carregando limites…"}`)))
+      .when(Boolean(agent), el => el.child(div().text_color(t.muted)
+        .tooltip("Modelo, esforço e contexto restante da sessão · limites da conta atualizados a cada minuto")
+        .child(`${model || "Codex"} · ${this.usage[space.machine ?? "local"]?.label ?? "Carregando limites…"}`)))
       .child(div().id("palette").text_color(t.dim).on_click(() => run("app.palette")).child(this.hint(t)));
   }
 }
