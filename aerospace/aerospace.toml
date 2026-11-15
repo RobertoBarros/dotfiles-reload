@@ -1,6 +1,7 @@
 config-version = 2
 
 start-at-login = true
+after-startup-command = ['layout --workspace 5 --root h_accordion']
 
 # after-startup-command = [
 #   'exec-and-forget borders active_color=0xffFF4500 inactive_color=0xffdcdcdc width=8.0 hidpi=on',
@@ -16,6 +17,10 @@ persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+[workspace-to-monitor-force-assignment]
+5 = ['secondary', 'main']
+6 = ['secondary', 'main']
 
 [key-mapping]
 preset = 'qwerty'
@@ -134,27 +139,35 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = 'layout tiling'
+run = ['layout tiling', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = ['layout accordion', 'layout tiling']
+run = ['layout accordion', 'layout tiling', 'move-node-to-workspace 3']
 
 [[on-window-detected]]
 if.app-id = 'com.cmuxterm.app'
-run = 'layout tiling'
+run = ['layout tiling', 'move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-id = 'dev.herdr.app'
-run = 'layout tiling'
+run = ['layout tiling', 'move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Terminal'
+run = ['layout tiling', 'move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = ['layout tiling', 'move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-id = 'com.openai.chat'
-run = 'layout tiling'
+run = ['layout tiling', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id = 'com.openai.codex'
-run = 'layout tiling'
+run = ['layout tiling', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
@@ -162,7 +175,7 @@ run = 'layout tiling'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = 'layout tiling'
+run = ['layout tiling', 'move-node-to-workspace 5', 'layout --workspace 5 --root h_accordion']
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
@@ -178,11 +191,11 @@ run = 'layout tiling'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'layout tiling'
+run = ['layout tiling', 'move-node-to-workspace 5', 'layout --workspace 5 --root h_accordion']
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan'
-run = 'layout tiling'
+run = ['layout tiling', 'move-node-to-workspace 6']
 
 # Apps not matched above open as floating by default.
 [[on-window-detected]]
