@@ -1,9 +1,13 @@
 {
-  "zoom": 0.9,
+  "zoom": 1,
   "sounds": {
     "enabled": true
   },
   "font_ligatures": false,
-  "minimum_contrast": 1.0,
-  "theme": "synthwave-84"
+  "terminal_line_height": 1,
+  "terminal_cell_width": 1,
+  "terminal_scroll_speed": 1,
+  "minimum_contrast": 1,
+  "theme": "synthwave-84",
+  "telemetry": false
 }
