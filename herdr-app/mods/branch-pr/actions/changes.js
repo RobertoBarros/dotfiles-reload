@@ -1,6 +1,10 @@
 // What this panel writes to GitHub, always from an explicit click: merging and
 // closing, re-requesting a review, and comments, replies and resolving.
+import { agents, focused, hc, notify } from "herdr";
 import { STATE_CHANGES } from "../github/model.js";
+
+const IMMEDIATE_MERGES = ["merge", "squash", "rebase"];
+const MERGE_PROMPT = "Merge feito, atualizar o master com o remote";
 
 export const changeMethods = {
   // Merge, close and reopen go through a confirmation row: they reach everyone
@@ -26,6 +30,8 @@ export const changeMethods = {
     const change = this.stateChange;
     if (!change || this.mutating) return;
     const key = this.spaceKey;
+    const space = this.sp;
+    const agent = IMMEDIATE_MERGES.includes(change.event) ? this.activeMergeAgent() : null;
     this.mutating = true;
     this.error = null;
     cx.notify();
@@ -42,6 +48,7 @@ export const changeMethods = {
             ? { method: this.pr.mergeMethods?.[0] ?? "merge", id: this.pr.id }
             : {}),
         });
+        if (agent) await this.sendMergePrompt(change, agent, space);
         if (key !== this.spaceKey) return;
         this.stateChange = null;
         this.notice = STATE_CHANGES[change.event].done;
@@ -55,6 +62,25 @@ export const changeMethods = {
         cx.notify();
       }
     });
+  },
+
+  activeMergeAgent() {
+    const focus = focused();
+    if (!focus || focus.space !== this.sp?.id) return null;
+    const inTab = agents().filter((agent) => agent.space === focus.space && agent.tab === focus.tab);
+    return inTab.find((agent) => agent.address === focus.terminal || agent.address === focus.agent)
+      ?? (inTab.length === 1 ? inTab[0] : null);
+  },
+
+  async sendMergePrompt({ repo, number }, agent, space) {
+    try {
+      const pr = await this.api({ action: "detail", repo, number }, space);
+      if (pr.state !== "MERGED") return;
+      const result = await hc(this.hcArgs(agent, MERGE_PROMPT));
+      if (result.code !== 0) throw new Error(result.stderr || "Agent delivery failed");
+    } catch (e) {
+      notify({ title: "Could not send the post-merge prompt", body: e.message });
+    }
   },
 
   requestReviewAgain(reviewer, cx) {
