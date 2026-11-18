@@ -58,6 +58,11 @@
     "ctrl-8": "space.select:8",
     "ctrl-9": "space.select:9"
   },
+  "layout:dotfiles-reload": {
+    "cmd-alt-b": "dotfiles-tabs.files",
+    "cmd-alt-n": "dotfiles-tabs.changes",
+    "cmd-alt-m": "dotfiles-tabs.pull-requests"
+  },
   "terminal": {
     "cmd-f": "terminal.search",
     "cmd-c": "terminal.copy",

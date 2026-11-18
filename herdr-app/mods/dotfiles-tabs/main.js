@@ -1,6 +1,6 @@
 import { View, div, svg, image } from "gpui-kit";
 import { h_flex, ScrollHandle } from "gpui-base";
-import { spaces, panes, run, openOverlay, theme, window, layout, settings } from "herdr";
+import { spaces, panes, run, openOverlay, theme, window, layout, settings, nextCommand } from "herdr";
 
 function find(node, id) {
   if (node?.id === id) return node;
@@ -28,12 +28,26 @@ function label(tab, lead) {
 }
 
 export default class Tabs extends View {
-  init() {
+  init(_props, cx) {
     this.pressed = null;
     this.scroll = ScrollHandle.new();
     try { this.panels = JSON.parse(localStorage.getItem("panels") ?? "{}"); } catch { this.panels = {}; }
     if (!this.panels || typeof this.panels !== "object" || Array.isArray(this.panels)) this.panels = {};
     this.swipe = { acc: 0, steps: 0, at: 0, last: 0 };
+    cx.spawn(async () => {
+      for (;;) this.togglePanel(await nextCommand());
+    });
+  }
+
+  togglePanel(id) {
+    const root = layout(), panel = find(root, "panel"), body = find(root, "panel-body");
+    if (!panel || !body?.children.some(child => child.id === id)) return;
+    if (!panel.hidden && body.active === id) {
+      run("layout.hide", { id: "panel" });
+    } else {
+      run("layout.select", { stack: "panel-body", child: id });
+      run("layout.show", { id: "panel" });
+    }
   }
 
   // One tab per wheel notch. A touchpad or smooth-scrolling mouse sends many
@@ -136,10 +150,7 @@ export default class Tabs extends View {
       return h_flex().id(`panel-${id}`).h(26).px(8).gap(5).flex_none().items_center().rounded(6)
         .text_size(12).bg(on ? t.selected : t.chrome).text_color(on ? t.foreground : t.muted)
         .hover(s => s.bg(t.hover)).on_mouse_down("left", stop)
-        .on_click(() => {
-          if (on) run("layout.hide", { id: "panel" });
-          else { run("layout.select", { stack: "panel-body", child: id }); run("layout.show", { id: "panel" }); }
-        }).child(svg(icon).size(14)).child(label);
+        .on_click(() => this.togglePanel(id)).child(svg(icon).size(14)).child(label);
     };
     return h_flex().size_full().min_w(0).px(10).pl(lightsPadding).gap(3).items_center().bg(t.chrome).border_b(1).border_color(t.border)
       .on_mouse_up("left", () => { this.pressed = null; })
