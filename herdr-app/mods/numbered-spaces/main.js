@@ -5,7 +5,8 @@
 
 import { View, div, svg } from "gpui-kit";
 import { v_flex, h_flex } from "gpui-base";
-import { spaces, machines, panes, run, openOverlay, exec, hc, theme, shared, setShared, watchFolder, window, layout, home } from "herdr";
+import { spaces, machines, panes, terminals, checking, run, openOverlay, exec, hc, theme, shared, setShared, watchFolder, window, layout, home } from "herdr";
+import { portsBySpace, formatPort } from "./ports.js";
 
 function find(node, id) {
   if (node?.id === id) return node;
@@ -46,6 +47,7 @@ export function tone(t, status) {
 
 export default class Spaces extends View {
   init(_props, cx) {
+    this.ports = {};
     this.git = {}; // where() -> { name, branch, ahead, behind, repo, linked }, null: not a repo
     this.checked = {}; // where() -> when it was last looked at
     this.unsure = new Set(); // where()s git couldn't answer for (a machine away)
@@ -69,6 +71,41 @@ export default class Spaces extends View {
     // `git status` walks the whole tree, on another machine a process there:
     // only when its answer could have changed (see `due`).
     cx.timer.every(250, (cx) => this.checkNew(cx));
+    if (!checking()) {
+      this.refreshPorts(cx);
+      cx.timer.every(5000, cx => { if (window().active) this.refreshPorts(cx); });
+    }
+  }
+
+  refreshPorts(cx) {
+    if (this.portsRefreshing) return;
+    this.portsRefreshing = true;
+    cx.spawn(async cx => {
+      try {
+        const sp = spaces(), ts = terminals();
+        const result = {};
+        const ready = machines().filter(m => m.layout === "ready" && sp.some(s => (s.machine ?? null) === m.name));
+        for (const { name: on } of ready) {
+          try {
+            const responses = await Promise.allSettled([
+              exec("ps", ["-axo", "pid=,ppid="], { on, timeout: 4000 }),
+              exec("lsof", ["-nP", "-iTCP", "-sTCP:LISTEN", "-Fpcn"], { on, timeout: 4000 }),
+            ]);
+            if (responses.some(r => r.status === "rejected")) continue;
+            const [processes, listeners] = responses.map(r => r.value);
+            // lsof exits 1 with no output when there are no matching listeners.
+            if (processes.code !== 0 || (listeners.code !== 0 && !(listeners.code === 1 && !listeners.stdout.trim()))) continue;
+            Object.assign(result, portsBySpace(sp, ts, processes.stdout, listeners.stdout, on));
+          } catch {} // An unavailable machine/tool must not leave stale port badges.
+        }
+        if (JSON.stringify(result) !== JSON.stringify(this.ports)) {
+          this.ports = result;
+          cx.notify();
+        }
+      } finally {
+        this.portsRefreshing = false;
+      }
+    });
   }
 
   checkNew(cx) {
@@ -358,6 +395,8 @@ export default class Spaces extends View {
   }
 
   row({ w, i, g, tree }, t, sp, ps) {
+    const ports = this.ports[w.id] ?? [];
+    const portLabel = ports.map(formatPort).join("  ");
     const on = w.active;
     const fromIndex = this.pressed === null ? -1 : sp.findIndex(s => s.id === this.pressed);
     const colors = shared("space.colors") ?? {};
@@ -374,7 +413,7 @@ export default class Spaces extends View {
       .relative()
       .id(`space-${w.id}`)
       .px(4)
-      .h(rowHeight({ tree }))
+      .h(rowHeight({ tree }) + (ports.length ? 18 : 0))
       .flex_none()
       .justify_center()
       .rounded(8)
@@ -420,13 +459,17 @@ export default class Spaces extends View {
             .child(h_flex().min_w(0).gap(5).items_center()
               .child(div().min_w(0).truncate().text_size(15).text_color(t.foreground).child(w.name)))
             .child(div().truncate().text_ellipsis_middle().text_size(11.5).text_color(t.muted).tooltip(folder ?? "Pasta indisponível").child(folderLabel || "Pasta indisponível"))
-            .child(g ? this.gitTail(g, t) : div().truncate().text_size(11.5).text_color(t.dim).child(gitStatus))),
+            .child(g ? this.gitTail(g, t) : div().truncate().text_size(11.5).text_color(t.dim).child(gitStatus))
+            .when(ports.length > 0, el => el.child(div().id(`space-ports-${w.id}`).truncate().text_size(11.5).text_color(t.ansi2)
+              .tooltip(`Portas TCP em escuta: ${portLabel}`).child(portLabel)))),
       );
   }
 
   compact({ w, i }, t) {
+    const ports = this.ports[w.id] ?? [];
     return h_flex()
       .id(`space-${w.id}`)
+      .tooltip([w.name, ...ports.map(formatPort)].join(" · "))
       .h(26)
       .flex_none()
       .justify_center()
