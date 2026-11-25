@@ -224,7 +224,7 @@ Os links mantêm o repositório como fonte das configurações. Alterações fei
 
 ### Herdr
 
-Herdr para organizar terminais, projetos e agentes de programação.
+Herdr para organizar terminais, projetos e agentes de programação. Os alvos `all` e `links` do instalador selecionam o layout `dotfiles-reload` na janela aberta ou salvam a seleção para a próxima abertura.
 
 ### Docker Sandboxes
 
