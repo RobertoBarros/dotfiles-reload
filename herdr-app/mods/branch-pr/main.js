@@ -182,7 +182,7 @@ class PullRequests extends View {
         duration(this.settings.refresh.every, REFRESH_INTERVAL_MS);
       // Coming back to a hidden panel makes it due at once, if it's been a while.
       if (!this.busy && !this.mutating && due && panelShown(layout(), "branch-pr"))
-        this.refresh(cx);
+        this.refresh(cx, { includeRepo: false });
     });
   }
 
