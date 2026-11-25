@@ -193,7 +193,7 @@ export const discoveryMethods = {
     cx.notify();
   },
 
-  resolveRepo(cx) {
+  resolveRepo(cx, includeRepo) {
     if (!this.sp?.folder) return;
     const token = ++this.repoToken;
     const key = this.spaceKey;
@@ -225,8 +225,8 @@ export const discoveryMethods = {
           this.items = [];
           this.listToken++;
         }
-        // Only what's on screen, to spare API quota, plus once for the tab's count.
-        if (this.view === "all" || !this.listLoaded) this.loadList(cx);
+        // Poll only the visible list after the first load, but honor a manual refresh.
+        if (includeRepo || this.view === "all" || !this.listLoaded) this.loadList(cx);
       } catch (e) {
         if (token === this.repoToken && key === this.spaceKey) {
           this.listToken++;

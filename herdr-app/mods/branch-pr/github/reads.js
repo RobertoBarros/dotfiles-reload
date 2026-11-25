@@ -145,9 +145,9 @@ export const readMethods = {
     });
   },
 
-  refresh(cx) {
+  refresh(cx, { includeRepo = true } = {}) {
     this.loadBranchPRs(cx);
-    this.resolveRepo(cx);
+    this.resolveRepo(cx, includeRepo);
     if (this.pr) this.openPR(this.pr.number, cx, this.pr.repository);
   },
 

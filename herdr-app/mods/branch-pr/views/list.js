@@ -97,13 +97,15 @@ export const listMethods = {
   },
 
   showView(view, cx) {
-    const sole = view === this.view && this.soleBranchPR();
+    const changed = view !== this.view;
+    const sole = !changed && this.soleBranchPR();
     if (sole && sole.number === this.pr?.number) return;
     if (this.pr || this.opening) this.backToList(cx);
     if (this.pr) return; // a write is under way, and leaving waits for it
     this.view = view;
     this.notice = null;
     localStorage.setItem("view", view);
+    if (changed && view === "all") this.loadList(cx);
     this.openSoleBranchPR(cx);
     cx.notify();
   },
