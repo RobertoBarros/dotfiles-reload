@@ -92,7 +92,12 @@ install_brew_pkgs() {
   brew install --cask font-jetbrains-mono-nerd-font
   brew install --cask wezterm
   brew install --cask cmux
-  brew install --cask herdr-app
+  if command -v herdr-core >/dev/null 2>&1 || [[ -x "$HOME/.local/bin/herdr-core" ||
+    -d "/Applications/Herdr.app" || -d "$HOME/Applications/Herdr.app" ]]; then
+    log_ok "Herdr already installed, skipping Homebrew cask"
+  else
+    brew install --cask herdr-app
+  fi
   brew install --cask hyperkey
   brew install --cask hammerspoon
   brew install --cask nikitabobko/tap/aerospace
