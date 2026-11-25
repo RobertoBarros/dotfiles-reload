@@ -63,7 +63,7 @@ usage() {
   printf "  mise     Configure Mise toolchains\n"
   printf "  macos    Apply macOS defaults\n"
   printf "  vscode   Install VS Code extensions\n"
-  printf "  links    Create configuration symlinks\n"
+  printf "  links    Create configuration symlinks and select the Herdr layout\n"
   printf "  help     Show this help\n"
 }
 
@@ -198,6 +198,44 @@ link_batch() {
     (( i++ ))
   done
   log_ok "symlink creation completed ($total)"
+
+  configure_herdr_layout
+}
+
+configure_herdr_layout() {
+  local app_dir="$HOME/.config/herdr-app"
+  local layout="dotfiles-reload"
+  local cli output
+
+  [[ -f "$app_dir/layouts/$layout.json" ]] || die "Herdr layout not found: $layout"
+
+  if [[ -S "$app_dir/herdr-app.sock" ]]; then
+    cli=$(command -v herdr-app) || cli="$HOME/.local/bin/herdr-app"
+    [[ -x "$cli" ]] || cli="$HOME/Applications/Herdr.app/Contents/MacOS/Herdr"
+    [[ -x "$cli" ]] || cli="/Applications/Herdr.app/Contents/MacOS/Herdr"
+    [[ -x "$cli" ]] || die "Herdr CLI not found for $app_dir/herdr-app.sock"
+
+    if output=$(HERDR_APP_HOME="$app_dir" "$cli" do layout.switch --name "$layout" 2>&1); then
+      log_ok "Herdr layout selected: $layout"
+      return
+    fi
+    # Herdr can leave its socket file behind after closing.
+    [[ "$output" == "herdr-app: no Herdr window at "* ]] || die "$output"
+  fi
+
+  /usr/bin/ruby -rjson -rtempfile - "$app_dir/shared.json" "$layout" <<'RUBY'
+file, layout = ARGV
+state = File.exist?(file) ? JSON.parse(File.read(file)) : {}
+unless state["layout"] == layout
+  state["layout"] = layout
+  Tempfile.create(".shared", File.dirname(file)) do |temp|
+    temp.write(JSON.generate(state))
+    temp.close
+    File.rename(temp.path, file)
+  end
+end
+RUBY
+  log_ok "Herdr layout selected for next launch: $layout"
 }
 
 configure_aerospace() {
