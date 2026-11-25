@@ -84,6 +84,10 @@ link_one() {
 }
 
 install_brew_pkgs() {
+  local macos_version
+  macos_version=$(sw_vers -productVersion)
+  autoload -Uz is-at-least
+
   section "Homebrew packages"
   brew install openssl libyaml pkg-config
   brew install atuin eza yazi fzf lazygit
@@ -101,7 +105,11 @@ install_brew_pkgs() {
   brew install --cask hyperkey
   brew install --cask hammerspoon
   brew install --cask nikitabobko/tap/aerospace
-  brew install --cask thaw
+  if is-at-least 26 "$macos_version"; then
+    brew install --cask thaw
+  else
+    log_warn "Skipping Thaw on macOS $macos_version (requires macOS 26 Tahoe or later)"
+  fi
   brew install --cask vorssaint
   log_ok "brew packages installed"
 }
