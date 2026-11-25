@@ -84,8 +84,9 @@ link_one() {
 }
 
 install_brew_pkgs() {
-  local macos_version
+  local macos_version mac_arch
   macos_version=$(sw_vers -productVersion)
+  mac_arch=$(uname -m)
   autoload -Uz is-at-least
 
   section "Homebrew packages"
@@ -110,7 +111,11 @@ install_brew_pkgs() {
   else
     log_warn "Skipping Thaw on macOS $macos_version (requires macOS 26 Tahoe or later)"
   fi
-  brew install --cask vorssaint
+  if [[ "$mac_arch" == arm64 ]] && is-at-least 14 "$macos_version"; then
+    brew install --cask vorssaint
+  else
+    log_warn "Skipping Vorssaint on macOS $macos_version ($mac_arch; requires macOS 14 or later on Apple silicon)"
+  fi
   log_ok "brew packages installed"
 }
 
