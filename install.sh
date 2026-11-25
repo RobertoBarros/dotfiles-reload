@@ -84,6 +84,11 @@ link_one() {
 }
 
 install_brew_pkgs() {
+  local macos_version mac_arch
+  macos_version=$(sw_vers -productVersion)
+  mac_arch=$(uname -m)
+  autoload -Uz is-at-least
+
   section "Homebrew packages"
   brew install openssl libyaml pkg-config
   brew install atuin eza yazi fzf lazygit
@@ -92,12 +97,25 @@ install_brew_pkgs() {
   brew install --cask font-jetbrains-mono-nerd-font
   brew install --cask wezterm
   brew install --cask cmux
-  brew install --cask herdr-app
+  if command -v herdr-core >/dev/null 2>&1 || [[ -x "$HOME/.local/bin/herdr-core" ||
+    -d "/Applications/Herdr.app" || -d "$HOME/Applications/Herdr.app" ]]; then
+    log_ok "Herdr already installed, skipping Homebrew cask"
+  else
+    brew install --cask herdr-app
+  fi
   brew install --cask hyperkey
   brew install --cask hammerspoon
   brew install --cask nikitabobko/tap/aerospace
-  brew install --cask thaw
-  brew install --cask vorssaint
+  if is-at-least 26 "$macos_version"; then
+    brew install --cask thaw
+  else
+    log_warn "Skipping Thaw on macOS $macos_version (requires macOS 26 Tahoe or later)"
+  fi
+  if [[ "$mac_arch" == arm64 ]] && is-at-least 14 "$macos_version"; then
+    brew install --cask vorssaint
+  else
+    log_warn "Skipping Vorssaint on macOS $macos_version ($mac_arch; requires macOS 14 or later on Apple silicon)"
+  fi
   log_ok "brew packages installed"
 }
 
